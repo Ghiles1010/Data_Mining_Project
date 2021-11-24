@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Measures_Controller">
+   <children>
+      <TextArea fx:id="describe" layoutX="27.0" layoutY="126.0" prefHeight="233.0" prefWidth="535.0" />
+      <Text layoutX="27.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description d'un attribut" />
+      <ComboBox fx:id="combox_attr" layoutX="27.0" layoutY="54.0" prefHeight="29.0" prefWidth="255.0" />
+      <Text layoutX="27.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choisissez un attribut" />
+      <Button layoutX="506.0" layoutY="54.0" mnemonicParsing="false" onAction="#show" text="show" />
+   </children>
+</AnchorPane>

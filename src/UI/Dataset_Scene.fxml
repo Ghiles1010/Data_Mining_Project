@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<?import javafx.scene.control.TextField?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Dataset_Controller">
+   <children>
+      <TextArea fx:id="general" layoutX="19.0" layoutY="36.0" prefHeight="62.0" prefWidth="563.0" />
+      <Text layoutX="19.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations générales" wrappingWidth="245.14385986328125" />
+      <Text layoutX="19.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de classes" />
+      <TextField fx:id="nb_class" layoutX="19.0" layoutY="141.0" />
+      <Text layoutX="19.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre d'attributs" />
+      <TextField fx:id="nb_attributs" layoutX="19.0" layoutY="275.0" />
+      <Text layoutX="19.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre d'instances" wrappingWidth="147.4889373779297" />
+      <TextField fx:id="nb_instance" layoutX="19.0" layoutY="211.0" />
+      <Text layoutX="19.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valeurs manquantes" />
+      <TextField fx:id="missing" layoutX="19.0" layoutY="337.0" />
+      <TextArea fx:id="repartitions" layoutX="208.0" layoutY="141.0" prefHeight="232.0" prefWidth="343.0" />
+      <Text layoutX="208.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Infos sur la répartition" wrappingWidth="245.14385986328125" />
+   </children>
+</AnchorPane>
