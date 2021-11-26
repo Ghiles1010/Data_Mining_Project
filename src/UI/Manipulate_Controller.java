@@ -39,6 +39,16 @@ public class Manipulate_Controller{
 
     }
 
+    @FXML
+    public void back() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("Main_Scene.fxml"));
+        Parent eval_scene = loader.load();
+
+        Stage window = (Stage) table.getScene().getWindow();
+        window.setScene(new Scene(eval_scene));
+    }
+
 
     private void init_table(){
 
@@ -92,8 +102,8 @@ public class Manipulate_Controller{
 
             Row row = new Row(instance);
 
-            table.getItems().set(index, row);
-
+            table.getItems().remove(index);
+            table.getItems().add(row);
 
             dataset.removeInstance(index);
             dataset.addInstance(instance);

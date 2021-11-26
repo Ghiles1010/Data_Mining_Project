@@ -213,6 +213,28 @@ public class Dataset {
         return sb.toString();
     }
 
+    public void editInstance(int instance_index, int attribut_index, double new_value){
+        XYSeriesCollection new_dataset = new XYSeriesCollection();
+        double[] new_col = this.getColumn(attribut_index);
+        new_col[instance_index] = new_value;
+        for (int i = 0; i < attribut_index; i++) {
+            new_dataset.addSeries(this.dataset.getSeries(i));
+        }
+        new_dataset.addSeries(this.addColumn(new_col));
+        for (int i = attribut_index+1; i < this.Nb_attributes(); i++) {
+            new_dataset.addSeries(this.dataset.getSeries(i));
+        }
+        this.dataset = new_dataset;
+    }
+
+    public XYSeries addColumn (double[] column){
+        XYSeries new_column = new XYSeries("0", false);
+        for (int i = 0; i < column.length; i++) {
+            new_column.add(column[i], null);
+        }
+        return  new_column;
+    }
+
     public String get_column_name(int i){
         return Names[i];
     }

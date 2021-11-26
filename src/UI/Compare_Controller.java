@@ -3,11 +3,17 @@ package UI;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
+import javafx.stage.Stage;
 import utils.Calcul;
 import utils.Charts;
 import utils.Dataset;
+
+import java.io.IOException;
 
 public class Compare_Controller {
 
@@ -39,6 +45,16 @@ public class Compare_Controller {
         dataset.ReadDataset(dataset_path);
 
 
+    }
+
+    @FXML
+    public void back() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("Main_Scene.fxml"));
+        Parent eval_scene = loader.load();
+
+        Stage window = (Stage) combox_attr2.getScene().getWindow();
+        window.setScene(new Scene(eval_scene));
     }
 
 

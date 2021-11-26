@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Attributes_Controller">
    <children>
       <TextArea fx:id="describe" layoutX="27.0" layoutY="126.0" prefHeight="233.0" prefWidth="535.0" />
@@ -14,5 +13,6 @@
       <ComboBox fx:id="combox_attr" layoutX="27.0" layoutY="54.0" prefHeight="29.0" prefWidth="255.0" />
       <Text layoutX="27.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choisissez un attribut" />
       <Button layoutX="506.0" layoutY="54.0" mnemonicParsing="false" onAction="#show" text="show" />
+      <Button layoutX="507.0" layoutY="16.0" mnemonicParsing="false" onAction="#back" text="Back" />
    </children>
 </AnchorPane>

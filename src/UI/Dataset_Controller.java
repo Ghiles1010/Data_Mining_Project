@@ -1,9 +1,15 @@
 package UI;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import utils.Dataset;
+
+import java.io.IOException;
 
 public class Dataset_Controller{
 
@@ -48,5 +54,15 @@ public class Dataset_Controller{
 
 
 
+    }
+
+    @FXML
+    public void back() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("Main_Scene.fxml"));
+        Parent eval_scene = loader.load();
+
+        Stage window = (Stage) missing.getScene().getWindow();
+        window.setScene(new Scene(eval_scene));
     }
 }
