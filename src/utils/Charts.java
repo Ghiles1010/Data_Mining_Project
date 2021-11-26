@@ -99,6 +99,9 @@ public class Charts {
         x_axis.setTickLabelsVisible(false);
 
         ValueAxis y_axis = plt.getRangeAxis();
+
+        y_axis.setRange(Calcul.min(ds,X_index)-1, Calcul.max(ds,X_index)+1);
+
         XYBoxAndWhiskerRenderer renderer = new XYBoxAndWhiskerRenderer();
         plt.setRenderer(renderer);
         renderer.setBoxPaint(Color.pink);
