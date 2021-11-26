@@ -38,7 +38,7 @@ public class Calcul {
             median = column[(column.length/2)];
         }
         else{
-            median = (column[(column.length/2)] + column[(column.length/2)+1] )/2;
+            median = (column[(column.length/2)-1] + column[(column.length/2)] )/2;
         }
 
         return median;

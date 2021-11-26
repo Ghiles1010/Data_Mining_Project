@@ -102,11 +102,11 @@ public class Manipulate_Controller{
 
             Row row = new Row(instance);
 
-            table.getItems().remove(index);
-            table.getItems().add(row);
+            table.getItems().set(index, row);
+            for (int i = 0; i < instance.length; i++) {
+                dataset.editInstance(index, i, instance[i]);
 
-            dataset.removeInstance(index);
-            dataset.addInstance(instance);
+            }
         }
     }
 

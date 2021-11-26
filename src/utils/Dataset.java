@@ -220,15 +220,15 @@ public class Dataset {
         for (int i = 0; i < attribut_index; i++) {
             new_dataset.addSeries(this.dataset.getSeries(i));
         }
-        new_dataset.addSeries(this.addColumn(new_col));
+        new_dataset.addSeries(this.addColumn(new_col, attribut_index));
         for (int i = attribut_index+1; i < this.Nb_attributes(); i++) {
             new_dataset.addSeries(this.dataset.getSeries(i));
         }
         this.dataset = new_dataset;
     }
 
-    public XYSeries addColumn (double[] column){
-        XYSeries new_column = new XYSeries("0", false);
+    public XYSeries addColumn (double[] column, int key){
+        XYSeries new_column = new XYSeries(""+key, false);
         for (int i = 0; i < column.length; i++) {
             new_column.add(column[i], null);
         }
