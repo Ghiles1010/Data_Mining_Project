@@ -9,9 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
-import utils.Dataset;
+import common.Dataset;
 
-import java.awt.*;
 import java.io.IOException;
 
 public class Attributes_Controller {

@@ -1,5 +1,7 @@
-package utils;
+package part1;
 
+import common.Calcul;
+import common.Dataset;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -13,7 +15,6 @@ import org.jfree.data.xy.XYSeriesCollection;
 
 import javax.swing.*;
 import java.awt.*;
-import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;

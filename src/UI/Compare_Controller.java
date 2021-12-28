@@ -9,9 +9,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
-import utils.Calcul;
-import utils.Charts;
-import utils.Dataset;
+import common.Calcul;
+import part1.Charts;
+import common.Dataset;
 
 import java.io.IOException;
 

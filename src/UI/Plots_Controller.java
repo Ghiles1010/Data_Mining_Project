@@ -7,12 +7,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import utils.Calcul;
-import utils.Charts;
-import utils.Dataset;
+import part1.Charts;
+import common.Dataset;
 
 import java.io.IOException;
 

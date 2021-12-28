@@ -1,7 +1,8 @@
-package utils;
+package part1;
 
 
-import org.jfree.data.xy.XYSeriesCollection;
+import common.Calcul;
+import common.Dataset;
 
 import java.io.FileNotFoundException;
 
