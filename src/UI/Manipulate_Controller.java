@@ -31,8 +31,7 @@ public class Manipulate_Controller{
     public  void init(String dataset_path){
 
 
-        dataset = new Dataset();
-        dataset.ReadDataset(dataset_path);
+        dataset = new Dataset(dataset_path);
 
         init_table();
 
@@ -53,7 +52,7 @@ public class Manipulate_Controller{
     private void init_table(){
 
 
-        for (int i=0;i<dataset.Nb_attributes();i++){
+        for (int i=0;i<dataset.nbAttributes();i++){
 
             String column_name = dataset.get_column_name(i);
 
@@ -68,7 +67,7 @@ public class Manipulate_Controller{
 
         final ObservableList<Row> rows = FXCollections.observableArrayList();
 
-        for(int i=0; i<dataset.Nb_Instances(); i++){
+        for(int i=0; i<dataset.nbInstances(); i++){
             Row row = new Row(dataset.getInstance(i));
             rows.add(row);
         }
@@ -81,7 +80,7 @@ public class Manipulate_Controller{
     @FXML
     public void save() throws FileNotFoundException {
 
-        dataset.SaveDataset();
+        dataset.saveDataset();
 
     }
 
@@ -113,7 +112,7 @@ public class Manipulate_Controller{
     @FXML
     public void add() throws IOException {
 
-        double [] instance = new double[dataset.Nb_attributes()];
+        double [] instance = new double[dataset.nbAttributes()];
 
         Add_Table_Controller add_table_controller = new Add_Table_Controller();
 

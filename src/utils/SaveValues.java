@@ -21,8 +21,7 @@ public class SaveValues {
         }
 
         // Lecture et creation du dataset
-        Dataset ds = new Dataset();
-        XYSeriesCollection dataset = ds.ReadDataset("dataset/seeds_dataset.txt");
+        Dataset ds = new Dataset("dataset/seeds_dataset.txt");
 
         try{
             FileWriter csvWriter = new FileWriter( resultsFolder + File.separator + "tendance.csv");

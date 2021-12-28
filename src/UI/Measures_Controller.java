@@ -32,11 +32,7 @@ public class Measures_Controller {
 
         combox_attr.setItems(options);
 
-        dataset = new Dataset();
-        dataset.ReadDataset(dataset_path);
-
-
-
+        dataset = new Dataset(dataset_path);
 
     }
 

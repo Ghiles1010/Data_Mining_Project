@@ -40,11 +40,7 @@ public class Plots_Controller {
         ObservableList<String> charts = FXCollections.observableArrayList("Histogram", "Box plot");
         combox_chart.setItems(charts);
 
-        dataset = new Dataset();
-        dataset.ReadDataset(dataset_path);
-
-
-
+        dataset = new Dataset(dataset_path);
 
 
 

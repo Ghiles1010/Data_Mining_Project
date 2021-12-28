@@ -2,34 +2,34 @@ package utils;
 
 import java.io.*;
 import java.util.ArrayList;
-
-import org.jfree.data.xy.XYSeries;
-import org.jfree.data.xy.XYSeriesCollection;
-
-
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class Dataset {
-
-    final String NEW_PATH = "dataset\\new_dataset.txt";
-
-    XYSeriesCollection dataset = new XYSeriesCollection();
-    ArrayList data = new ArrayList();
+    ArrayList<ArrayList<Double>> data;
     String[] Names = {"Area", "Perimeter", "Compactness", "Kernel_lenght", "Kernel_width",
             "Asymmetry_coefficient", "Kernel_groove_groove", "Classe"};
 
-    public XYSeriesCollection ReadDataset(String path){
+    public Dataset(String path) {
+        this.ReadDataset(path);
+    }
+
+    public void ReadDataset(String path){
+        this.data = new ArrayList();
         try {
             BufferedReader BfReader = new BufferedReader(new FileReader(path));
             String line = BfReader.readLine();
             while (line != null){
                 //Lire le fichier du dataset ligne par ligne et le mettre dans une 'ArrayList' de tableaux de 'doubles'
                 String [] values = line.split("[ \t]+");
-                double [] values_double = new double[8];
-                for (int i = 0; i<values_double.length; i++){
+                //double [] values_double = new double[8];
+                ArrayList instance = new ArrayList();
+                for (int i = 0; i<values.length; i++){
                     if (values[i] != "")
-                        values_double[i] = (Double.parseDouble(values[i]));
+                        //instance.set(i, (Double.parseDouble(values[i])));
+                        instance.add((Double.parseDouble(values[i])));
                 }
-                data.add(values_double);
+                this.data.add(instance);
                 line = BfReader.readLine();
             }
         } catch (FileNotFoundException e) {
@@ -37,82 +37,79 @@ public class Dataset {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        this.CreateDataset();
-        return this.dataset;
+        //return this.data;
     }
 
-    public void CreateDataset(){
-        // Creation d'une collection de données (de type XYSeriesCollection)
-        // Chaque colonne de la collection est de type 'XYSeries' où X vas contenir la valeur de l'attribut
-        int nb_attributes = ((double [])this.data.get(0)).length;
-        int nb_instances = this.data.size();
-        for (int i = 0; i < nb_attributes; i++){
-            XYSeries X = new XYSeries(""+i, false);
-            for (int j=0; j<nb_instances; j++){
-                X.add(((double[])data.get(j))[i], null); // Recuperer l'élément j de la ligne i.
-            }
-            this.dataset.addSeries(X);
-        }
-    }
+    public int nbInstances() { return data.size(); }
 
-    // Ajouter une instance dans le dataset
-    public void addInstance(double [] instance){
-        XYSeriesCollection new_dataset = new XYSeriesCollection();
-        XYSeries column ;
-        for(int i=0; i<this.Nb_attributes(); i++){
-            column = this.dataset.getSeries(i);
-            column.add(instance[i], null);
-            new_dataset.addSeries(column);
-        }
-        this.dataset = new_dataset;
-    }
+    public int nbAttributes() { return data.get(0).size(); }
 
-    //Recuperer l'instance ayant l'indice "index"
-    public double[] getInstance (int index){
-        double[] instance = new double[this.Nb_attributes()];
-        for(int i=0; i<this.Nb_attributes(); i++){
-            instance[i] = (double)this.dataset.getX(i, index);
+    //public ArrayList getInstance(int i) { return data.get(i); }
+    public double[] getInstance(int index) {
+        double[] instance = new double[nbAttributes()];
+        for (int i = 0; i < instance.length; i++) {
+            instance[i] = (double) (this.data.get(index)).get(i);
         }
         return instance;
     }
 
+    public int getClass(int index) { return (int) ((double)data.get(index).get(this.nbAttributes()-1)); }
 
-
-
-    public void removeInstance (int index){
-        XYSeriesCollection new_dataset = new XYSeriesCollection();
-        XYSeries column ;
-        for(int i=0; i<this.Nb_attributes(); i++){
-            column = this.dataset.getSeries(i);
-            column.remove(index);
-            new_dataset.addSeries(column);
-        }
-        this.dataset = new_dataset;
+    public double[] getFeatures(int index) {
+        return Arrays.copyOf(getInstance(index), this.nbAttributes()-1);
     }
 
     public double[] getColumn (int attribute_index){
-        int nb_instances = this.dataset.getItemCount(0);
-        double [] column = new double[nb_instances];
-        for (int i = 0; i< nb_instances; i++){
-            column[i] = (double) this.dataset.getX(attribute_index, i);
+        double[] column = new double[this.nbInstances()];
+
+        for (int i = 0; i < this.nbInstances(); i++) {
+            column[i] = data.get(i).get(attribute_index);
         }
+
         return column;
     }
 
-    public void printDataset () {
-        for (int i = 0; i < this.Nb_Instances(); i++) {
-            double[] instance = this.getInstance(i);
-            System.out.print("\n");
-            for (double value : instance) {
-                System.out.print(value + "\t");
-            }
-        }
+    public int nbClasses(){
+        double[] class_att = this.getColumn(nbAttributes()-1);
+        return (int) java.util.Arrays.stream(class_att).distinct().count();
     }
 
-    //Sauvegarder le dataset dans un fichier txt
-    public void SaveDataset() throws FileNotFoundException{
-        PrintWriter PW = new PrintWriter(new FileOutputStream(NEW_PATH));
-        for (int i = 0; i < this.Nb_Instances(); i++) {
+    public double [] getAllClasses (){
+        double [] classes;
+        classes = (java.util.Arrays.stream(this.getColumn(nbAttributes()-1)).distinct()).toArray();
+        //for (double c : classes) { System.out.print("\n class : "+ (int)c); }
+        return classes;
+    }
+
+    public void addInstance(double [] instance){
+        ArrayList inst = (ArrayList) Arrays.stream(instance).boxed().collect(Collectors.toList());
+        this.data.add(inst);
+    }
+
+    public void addInstance(int index, double [] instance){
+        ArrayList inst = (ArrayList) Arrays.stream(instance).boxed().collect(Collectors.toList());
+        this.data.add(index, inst);
+    }
+
+    public void editInstance(int instance_index, int attribute_index, double new_value){
+        this.data.get(instance_index).set(attribute_index, new_value);
+    }
+
+    public void removeInstance (int index){
+        data.remove(index);
+    }
+
+    public int nbInstancePerClass (int classe){       //Nombre d'instances de cette classe
+        int nb_inst = 0;
+        for (int i = 0; i < nbInstances(); i++) {
+            if (this.getClass(i) == classe)  nb_inst++;
+        }
+        return nb_inst;
+    }
+
+    public void saveDataset() throws FileNotFoundException{
+        PrintWriter PW = new PrintWriter(new FileOutputStream("dataset\\new_dataset.txt"));
+        for (int i = 0; i < this.nbInstances(); i++) {
             double[] instance = this.getInstance(i);
             String inst = "";
             for (double value : instance) {
@@ -123,40 +120,35 @@ public class Dataset {
         PW.close();
     }
 
+    public void printDataset () {
+        for (int i = 0; i < this.nbInstances(); i++) {
+            double[] instance = this.getInstance(i);
+            System.out.print("\n");
+            for (int j = 0; j < this.nbAttributes(); j++) {
+                System.out.print(instance[j] + "\t");
+            }
+        }
+    }
+
+    public void printInstance (double[] instance) {
+        for (int i = 0; i < instance.length; i++) {
+            System.out.print(instance[i] + "\t");
+        }
+        System.out.println("\n");
+    }
+
     // Description du DATASET
     public String desc(){
         return " Le dataset represente un échantillon de grains appartenant à trois variétés différentes de blé " +
                 "Kama, Rosa and Canadian. Chaque classe a 70 elements";
     }
 
-    //Nombre d'instances
-    public int Nb_Instances() { return this.dataset.getItemCount(0);  }
-
-    //Nombre d'attributs
-    public int Nb_attributes() { return this.dataset.getSeriesCount() ; }
-
-    //Nombre de classes du dataset
-    public  int Nb_classe() {
-        double[] class_att = this.getColumn(7);
-        return (int) java.util.Arrays.stream(class_att).distinct().count();
-    }
-
-    //Récuperer les classes
-    public double [] getClasses () {
-        double [] classes;
-        classes = (java.util.Arrays.stream(this.getColumn(7)).distinct()).toArray();
-        //for (double c : classes) { System.out.print("\n class : "+ (int)c); }
-        return classes;
-    }
-
-    //Distribution des classes (nombre et pourcentage d'instances par classe)!!!!!!!!!!!!!!!!!!!!!!!!!!
     public String class_desc() {
         double[] column = this.getColumn(7);
-        System.out.println(this.Nb_classe());
-        int[] nombre = new int[this.Nb_classe()];
-        int[] pourcentage = new int[this.Nb_classe()];
+        int[] nombre = new int[this.nbClasses()];
+        int[] pourcentage = new int[this.nbClasses()];
 
-        for(int j=0; j<this.Nb_classe(); j++) {
+        for(int j=0; j<this.nbClasses(); j++) {
             nombre[j] = 0;
             for (int i = 0; i < column.length; i++){
                 if(((int)column[i])== j+1){
@@ -166,28 +158,12 @@ public class Dataset {
         }
         //pourcentage
         for (int i =0; i<nombre.length;i++) {
-             pourcentage[i] = nombre[i] * 100 / column.length; }
+            pourcentage[i] = nombre[i] * 100 / column.length; }
 
         return "nombre d'instance de classe KAMA = " + nombre[0] + "\n le pourcentage = " + pourcentage[0]+"%"
                 + "\nnombre d'instance de classe ROSA = " + nombre[1]+ "\n le pourcentage = " + pourcentage[1]+"%"
                 + "\nnombre d'instance de classe CANADIAN = " + nombre[2] + "\n le pourcentage = "+pourcentage[2]+"%";
     }
-
-    //Valeurs manquantes
-    public boolean val_manq(){
-        boolean val = false;
-        for(int att=0; att<this.Nb_attributes();att++){
-            double[] column = this.getColumn(att);
-            for(int i=0; i<column.length; i++){
-                if(String.valueOf(column[i])=="NAN" || String.valueOf(column[i])==" " ) val = true;
-            }
-        }
-        return val;
-    }
-
-    /*Description des attributs
-    Numéro, nom, description, type et valeurs possibles de chaque attribut
-    Types possibles (Nominal, Binaire symétrique, Binaire asymétrique, Numérique) – (Qualitatif, Quantitatif) – (Discret, continu)*/
 
     public String desc_att(int i){
         String[] name = {"area A", "perimeter P", "compactness C", "length of kernel", "width of kernel",
@@ -213,26 +189,16 @@ public class Dataset {
         return sb.toString();
     }
 
-    public void editInstance(int instance_index, int attribut_index, double new_value){
-        XYSeriesCollection new_dataset = new XYSeriesCollection();
-        double[] new_col = this.getColumn(attribut_index);
-        new_col[instance_index] = new_value;
-        for (int i = 0; i < attribut_index; i++) {
-            new_dataset.addSeries(this.dataset.getSeries(i));
+    //Valeurs manquantes
+    public boolean val_manq(){
+        boolean val = false;
+        for(int att=0; att<this.nbAttributes();att++){
+            double[] column = this.getColumn(att);
+            for(int i=0; i<column.length; i++){
+                if(String.valueOf(column[i])=="NAN" || String.valueOf(column[i])==" " ) val = true;
+            }
         }
-        new_dataset.addSeries(this.addColumn(new_col, attribut_index));
-        for (int i = attribut_index+1; i < this.Nb_attributes(); i++) {
-            new_dataset.addSeries(this.dataset.getSeries(i));
-        }
-        this.dataset = new_dataset;
-    }
-
-    public XYSeries addColumn (double[] column, int key){
-        XYSeries new_column = new XYSeries(""+key, false);
-        for (int i = 0; i < column.length; i++) {
-            new_column.add(column[i], null);
-        }
-        return  new_column;
+        return val;
     }
 
     public String get_column_name(int i){
@@ -243,14 +209,5 @@ public class Dataset {
     public String[] getNames() {
         return Names;
     }
+
 }
-
-
-
-
-
-
-
-
-
-

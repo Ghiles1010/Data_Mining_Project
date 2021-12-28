@@ -10,12 +10,11 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException {
 
         // Lecture et creation du dataset
-        Dataset ds = new Dataset();
-        XYSeriesCollection dataset = ds.ReadDataset("dataset/seeds_dataset.txt");
+        Dataset ds = new Dataset("dataset/seeds_dataset.txt");
         ds.printDataset();
 
         System.out.println("\n Desc : ");
-        ds.class_desc();
+        ds.printDataset();
         int att=2;
 
         //Stats :
@@ -38,9 +37,9 @@ public class Main {
         System.out.println("Les valeurs aberrantes sont: "+Calcul.aberrant(ds,att));
 
 
-        System.out.print("\n Nombre d'instances  : " + ds.Nb_Instances());
-        System.out.print("\n Nombre d'attributs : " + ds.Nb_attributes());
-        System.out.println("\n Nombre de classes distinctes : " + ds.Nb_classe());
+        System.out.print("\n Nombre d'instances  : " + ds.nbInstances());
+        System.out.print("\n Nombre d'attributs : " + ds.nbAttributes());
+        System.out.println("\n Nombre de classes distinctes : " + ds.nbClasses());
 
         int X = 0; int Y = 1;
         double coef = Calcul.correlation(ds, X, Y);
@@ -53,7 +52,7 @@ public class Main {
         //ds.addInstance(new_instance);   //Ajouter une nouvelle instance
         //ds.removeInstance(0);     // Supprimer l'instance ayant l'indice 0
         ds.printDataset();
-        ds.SaveDataset();       //Sauvegarder le dataset dans un fichier txt
+        ds.saveDataset();       //Sauvegarder le dataset dans un fichier txt
 
         // Graphes
         Charts ch = new Charts();

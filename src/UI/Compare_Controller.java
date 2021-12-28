@@ -41,8 +41,7 @@ public class Compare_Controller {
         combox_attr2.setItems(options);
 
 
-        dataset = new Dataset();
-        dataset.ReadDataset(dataset_path);
+        dataset = new Dataset(dataset_path);
 
 
     }
