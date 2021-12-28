@@ -3,9 +3,10 @@ package common;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.stream.Collectors;
 
-public class Dataset {
+public class Dataset implements Iterable{
     ArrayList<ArrayList<Double>> data;
     String[] Names = {"Area", "Perimeter", "Compactness", "Kernel_lenght", "Kernel_width",
             "Asymmetry_coefficient", "Kernel_groove_groove", "Classe"};
@@ -93,6 +94,17 @@ public class Dataset {
 
     public void editInstance(int instance_index, int attribute_index, double new_value){
         this.data.get(instance_index).set(attribute_index, new_value);
+    }
+
+    // edit an instance by giving an array of double
+    public void editInstance(int instance_index, double [] instance){
+        ArrayList inst = (ArrayList) Arrays.stream(instance).boxed().collect(Collectors.toList());
+        this.data.set(instance_index, inst);
+    }
+
+    // edit an instance by giving an arraylist of doubles
+    public void editInstance(int instance_index, ArrayList<Double> instance){
+        this.data.set(instance_index, instance);
     }
 
     public void removeInstance (int index){
@@ -205,9 +217,12 @@ public class Dataset {
         return Names[i];
     }
 
-
     public String[] getNames() {
         return Names;
     }
 
+    @Override
+    public Iterator iterator() {
+        return this.data.iterator();
+    }
 }
