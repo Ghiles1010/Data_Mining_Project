@@ -105,7 +105,7 @@ public class Calcul {
         // creation d'un liste sans repetition
         for(int i=0; i<column.length; i++){
             if(notIn(vals,column[i])) vals.add(column[i]);
-            }
+        }
 
         //calculer la freq de chaque nombre
 
@@ -187,7 +187,7 @@ public class Calcul {
 
     //*********************************** ECART TYPE **************************//
     public static double ecart_type(Dataset ds, int X_index){
-        return   Math.sqrt(variance(ds,X_index)) ;
+        return Math.sqrt(variance(ds,X_index)) ;
     }
 
     //*********************************** ECART INTERQUARTILE **************************//
