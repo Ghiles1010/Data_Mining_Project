@@ -1,5 +1,7 @@
-package utils;
+package part1;
 
+import common.Calcul;
+import common.Dataset;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -13,7 +15,6 @@ import org.jfree.data.xy.XYSeriesCollection;
 
 import javax.swing.*;
 import java.awt.*;
-import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -35,8 +36,8 @@ public class Charts {
         //Recuperer les colonnes d'indices 'X_index' et 'Y_index' et les mettre dans une collection
         XYSeriesCollection dataFrame = new XYSeriesCollection();
         XYSeries XY = new XYSeries("");
-        for (int i = 0; i< ds.Nb_Instances(); i++){
-            XY.add((double) ds.dataset.getX(X_index, i), ds.dataset.getX(Y_index, i) );
+        for (int i = 0; i< ds.nbInstances(); i++){
+            XY.add(ds.getInstance(i)[X_index], ds.getInstance(i)[Y_index]);
         }
         dataFrame.addSeries(XY);
 
@@ -59,8 +60,8 @@ public class Charts {
         double [] column = ds.getColumn(X_index) ;
         HistogramDataset histogramDataset = new HistogramDataset();
         histogramDataset.setType(HistogramType.FREQUENCY);
-        if (X_index == ds.dataset.getSeriesCount()-1)    //Si l'attribut choisi est la classe
-            histogramDataset.addSeries("class", column, ds.Nb_classe());
+        if (X_index == ds.nbAttributes() - 1)    //Si l'attribut choisi est la classe
+            histogramDataset.addSeries("class", column, ds.nbClasses());
         else
             histogramDataset.addSeries("", column, bins);
 

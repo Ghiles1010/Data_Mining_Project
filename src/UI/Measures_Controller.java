@@ -9,8 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
-import utils.Calcul;
-import utils.Dataset;
+import common.Calcul;
+import common.Dataset;
 
 import java.io.IOException;
 
@@ -32,11 +32,7 @@ public class Measures_Controller {
 
         combox_attr.setItems(options);
 
-        dataset = new Dataset();
-        dataset.ReadDataset(dataset_path);
-
-
-
+        dataset = new Dataset(dataset_path);
 
     }
 

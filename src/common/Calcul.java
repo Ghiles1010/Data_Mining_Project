@@ -1,4 +1,4 @@
-package utils;
+package common;
 
 import java.util.*;
 
@@ -105,7 +105,7 @@ public class Calcul {
         // creation d'un liste sans repetition
         for(int i=0; i<column.length; i++){
             if(notIn(vals,column[i])) vals.add(column[i]);
-            }
+        }
 
         //calculer la freq de chaque nombre
 
@@ -187,7 +187,7 @@ public class Calcul {
 
     //*********************************** ECART TYPE **************************//
     public static double ecart_type(Dataset ds, int X_index){
-        return   Math.sqrt(variance(ds,X_index)) ;
+        return Math.sqrt(variance(ds,X_index)) ;
     }
 
     //*********************************** ECART INTERQUARTILE **************************//
@@ -223,8 +223,8 @@ public class Calcul {
         for (int i = 0; i < column1.length; i++) {
             sum += column1[i]*column2[i] ;
         }
-        coef = sum - ds.Nb_Instances()*(moy(ds, X_index))*moy(ds, Y_index) ;
-        coef = coef/((ds.Nb_Instances() - 1)* ecart_type(ds, X_index) * ecart_type(ds, Y_index));
+        coef = sum - ds.nbInstances()*(moy(ds, X_index))*moy(ds, Y_index) ;
+        coef = coef/((ds.nbInstances() - 1)* ecart_type(ds, X_index) * ecart_type(ds, Y_index));
         return coef;
     }
 

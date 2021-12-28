@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import utils.Dataset;
+import common.Dataset;
 
 import java.io.IOException;
 
@@ -31,19 +31,18 @@ public class Dataset_Controller{
 
     public void init(String dataset_path){
 
-        dataset = new Dataset();
-        dataset.ReadDataset(dataset_path);
+        dataset = new Dataset(dataset_path);
 
         general.setText(dataset.desc());
         general.setEditable(false);
 
-        nb_class.setText(Integer.toString(dataset.Nb_classe()));
+        nb_class.setText(Integer.toString(dataset.nbClasses()));
         nb_class.setEditable(false);
 
-        nb_instance.setText(Integer.toString(dataset.Nb_Instances()));
+        nb_instance.setText(Integer.toString(dataset.nbInstances()));
         nb_instance.setEditable(false);
 
-        nb_attributs.setText(Integer.toString(dataset.Nb_attributes()));
+        nb_attributs.setText(Integer.toString(dataset.nbAttributes()));
         nb_attributs.setEditable(false);
 
         missing.setText(Boolean.toString(dataset.val_manq()));
