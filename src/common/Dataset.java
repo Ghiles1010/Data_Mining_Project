@@ -15,8 +15,12 @@ public class Dataset implements Iterable{
         this.ReadDataset(path);
     }
 
+    public Dataset(ArrayList<ArrayList<Double>> data) {
+        this.data = data;
+    }
+
     public void ReadDataset(String path){
-        this.data = new ArrayList();
+        this.data = new ArrayList<ArrayList<Double>>();
         try {
             BufferedReader BfReader = new BufferedReader(new FileReader(path));
             String line = BfReader.readLine();
@@ -45,7 +49,8 @@ public class Dataset implements Iterable{
 
     public int nbAttributes() { return data.get(0).size(); }
 
-    //public ArrayList getInstance(int i) { return data.get(i); }
+    public ArrayList<Double> getInstanceArrayList(int i) { return data.get(i); }
+
     public double[] getInstance(int index) {
         double[] instance = new double[nbAttributes()];
         for (int i = 0; i < instance.length; i++) {
