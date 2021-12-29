@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.stream.Collectors;
 
-public class Dataset implements Iterable{
+public class Dataset implements Iterable<ArrayList<Double>>{
     ArrayList<ArrayList<Double>> data;
     String[] Names = {"Area", "Perimeter", "Compactness", "Kernel_lenght", "Kernel_width",
             "Asymmetry_coefficient", "Kernel_groove_groove", "Classe"};
@@ -227,7 +227,7 @@ public class Dataset implements Iterable{
     }
 
     @Override
-    public Iterator iterator() {
+    public Iterator<ArrayList<Double>> iterator() {
         return this.data.iterator();
     }
 }
