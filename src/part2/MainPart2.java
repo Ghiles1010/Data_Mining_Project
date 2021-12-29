@@ -15,9 +15,12 @@ public class MainPart2 {
 
         // Lecture et creation du dataset
         Dataset ds = new Dataset("dataset/seeds_dataset.txt");
-        ds.printDataset();
+
         ds = Normalization.minMax(ds);
         Discretization.amplitudeDiscretization(ds, 4);
+
+        KNN knn = new KNN(ds, 5);
+        knn.test();
 
 
     }

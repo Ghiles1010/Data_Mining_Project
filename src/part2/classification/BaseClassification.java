@@ -10,10 +10,12 @@ public class BaseClassification {
 
     public BaseClassification(Dataset dataset) {
         this.dataset = dataset;
+        this.split_data();
     }
 
     public BaseClassification(String path) {
         this.dataset = new Dataset(path);
+        this.split_data();
     }
 
     // this methos splits the data between train and test data
@@ -51,6 +53,15 @@ public class BaseClassification {
         }
         this.train_data = new Dataset(train);
         this.test_data = new Dataset(test);
+    }
+
+    protected double euclidianDistance(ArrayList<Double> l1, ArrayList<Double> l2){
+        double dist = 0;
+
+        for (int i=0; i<l1.size(); i++){
+            dist += Math.pow(l1.get(i) - l2.get(i), 2);
+        }
+        return Math.sqrt(dist);
     }
 
 }
