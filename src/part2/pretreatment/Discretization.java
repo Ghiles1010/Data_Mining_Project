@@ -84,7 +84,7 @@ public class Discretization {
             double borne_sup = min + width;
             int num_intervalle = 1;
             while (borne_sup <= max) {
-                if (instance[i] < borne_sup) {
+                if (instance[i] < borne_sup || instance[i] == max) {
                     break;
                 }
                 else if(instance[i] >= borne_sup) {

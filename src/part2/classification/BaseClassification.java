@@ -92,6 +92,7 @@ public abstract class BaseClassification {
     }
 
     public void confusionMatrixClasses(){
+        confusionMatrixClasses = new HashMap<>(  );
         confusionMatrixClasses.put(1, confusionMatrixForClass(1));
         confusionMatrixClasses.put(2, confusionMatrixForClass(2));
         confusionMatrixClasses.put(3, confusionMatrixForClass(3));

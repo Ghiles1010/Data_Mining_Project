@@ -15,17 +15,11 @@ public class MainPart2 {
 
     public static void main(String[] args) throws FileNotFoundException {
 
-        // Lecture et creation du dataset
-        Dataset ds = new Dataset("dataset/seeds_dataset.txt");
+        Dataset ds = API.normalization("dataset/seeds_dataset.txt", "minmax");
+        ArrayList<String[]> r =  API.discretisation("dataset/seeds_dataset.txt", "minmax", "amplitude", 4);
+        KNN knn = API.knn("dataset/seeds_dataset.txt", 20,"minmax", 5, "euclidean");
 
-        ds = Normalization.minMax(ds);
-
-        ds.printDataset();
-        ArrayList<String[]> discretization = Discretization.amplitudeDiscretization(ds, 4);
-
-        NaiveBayes knn = new NaiveBayes(ds, 20, discretization, 20);
-        knn.execute();
-
-
+        NaiveBayes naive = API.naiveBayes("dataset/seeds_dataset.txt", 20,"minmax", "amplitude", 4);
+        System.out.println(  );
     }
 }
