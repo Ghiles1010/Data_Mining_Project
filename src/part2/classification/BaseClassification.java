@@ -11,7 +11,7 @@ public abstract class BaseClassification {
     protected HashMap<ArrayList<Double>, Integer> predictedData;
 
     protected ArrayList<ArrayList<Integer>> confusion_matrix;
-    int[][] confusionMatrixClass1, confusionMatrixClass2, confusionMatrixClass3;
+    private HashMap<Integer, int[][]> confusionMatrixClasses;
 
     protected double executionTime;
 
@@ -32,16 +32,39 @@ public abstract class BaseClassification {
         return executionTime;
     }
 
-    public int[][] getConfusionMatrixClass1() {
-        return confusionMatrixClass1;
+    public int[][] getConfusionMatrixClass(int idClass) {
+        return confusionMatrixClasses.get(idClass);
     }
 
-    public int[][] getConfusionMatrixClass2() {
-        return confusionMatrixClass2;
+    public double getRecall(int idClass){
+        int[][] matrix = getConfusionMatrixClass(idClass);
+        return (double) matrix[0][0] / (double) (matrix[0][0] + matrix[0][1]);
+
     }
 
-    public int[][] getConfusionMatrixClass3() {
-        return confusionMatrixClass3;
+    public double getPrecision(int idClass){
+        int[][] matrix = getConfusionMatrixClass(idClass);
+        return (double) matrix[0][0] / (double) (matrix[0][0] + matrix[1][0]);
+    }
+
+    public double getFScore(int idClass){
+        double precision = getPrecision(idClass), recall = getRecall(idClass);
+        return (2*precision*recall)/(recall + precision);
+    }
+
+    public double getAccuracy(int idClass){
+        int[][] matrix = getConfusionMatrixClass(idClass);
+        return (double) (matrix[0][0] + matrix[1][1]) / (double) (matrix[0][0] + matrix[0][1] + matrix[1][0] + matrix[1][1]);
+    }
+
+    public double getSensitivity(int idClass){
+        int[][] matrix = getConfusionMatrixClass(idClass);
+        return (double) matrix[0][0] / (double) (matrix[0][0] + matrix[0][1]);
+    }
+
+    public double getSpecificity(int idClass){
+        int[][] matrix = getConfusionMatrixClass(idClass);
+        return (double) matrix[1][1] / (double) (matrix[1][0] + matrix[1][1]);
     }
 
     public ArrayList<ArrayList<Integer>> confusionMatrix(){
@@ -69,9 +92,9 @@ public abstract class BaseClassification {
     }
 
     public void confusionMatrixClasses(){
-        this.confusionMatrixClass1 = confusionMatrixForClass(1);
-        this.confusionMatrixClass2 = confusionMatrixForClass(2);
-        this.confusionMatrixClass3 = confusionMatrixForClass(3);
+        confusionMatrixClasses.put(1, confusionMatrixForClass(1));
+        confusionMatrixClasses.put(2, confusionMatrixForClass(2));
+        confusionMatrixClasses.put(3, confusionMatrixForClass(3));
     }
 
     private int[][] confusionMatrixForClass(int idClass){
