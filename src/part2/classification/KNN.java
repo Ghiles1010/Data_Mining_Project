@@ -105,13 +105,13 @@ public class KNN extends BaseClassification{
     }
 
     public void test(){
-        for (ArrayList<Double> list : this.test_data){
 
-            int reelClass = list.get(this.test_data.nbAttributes()-1).intValue();
+        this.predictedData = new HashMap<>(  );
+        for (ArrayList<Double> list : this.test_data){
             int predictedClass = predict(list);
-            if (predictedClass != reelClass){
-                System.out.println(reelClass  + " " + predictedClass );
-            }
+            this.predictedData.put(list, predictedClass);
         }
+
+        this.confusionMatrix();
     }
 }

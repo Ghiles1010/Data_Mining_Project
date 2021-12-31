@@ -3,10 +3,14 @@ package part2.classification;
 import common.Dataset;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class BaseClassification {
 
     protected Dataset dataset, train_data, test_data;
+    protected ArrayList<Integer> predictedClasses;
+    protected HashMap<ArrayList<Double>, Integer> predictedData;
+    protected ArrayList<ArrayList<Integer>> confusion_matrix;
 
     public BaseClassification(Dataset dataset) {
         this.dataset = dataset;
@@ -16,6 +20,30 @@ public class BaseClassification {
     public BaseClassification(String path) {
         this.dataset = new Dataset(path);
         this.split_data();
+    }
+
+    public ArrayList<ArrayList<Integer>> confusionMatrix(){
+        this.confusion_matrix = new ArrayList();
+        int predictedClass, realClass;
+
+        //Initialize confusion_matrix
+        for (int i=0; i<3; i++) {
+            this.confusion_matrix.add(new ArrayList<>());
+            for (int j=0; j<3; j++) {
+                this.confusion_matrix.get(i).add(0);
+            }
+        }
+
+        for (ArrayList<Double> list : this.predictedData.keySet()) {
+
+            predictedClass = this.predictedData.get(list);
+            realClass = list.get(list.size() - 1).intValue();
+            int value = this.confusion_matrix.get(realClass-1).get(predictedClass-1);
+            value++;
+            this.confusion_matrix.get(realClass-1).set(predictedClass-1, value);
+        }
+
+        return this.confusion_matrix;
     }
 
     // this methos splits the data between train and test data
@@ -54,5 +82,4 @@ public class BaseClassification {
         this.train_data = new Dataset(train);
         this.test_data = new Dataset(test);
     }
-
 }
