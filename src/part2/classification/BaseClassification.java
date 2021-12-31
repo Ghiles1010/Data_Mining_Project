@@ -31,7 +31,7 @@ public abstract class BaseClassification {
     }
 
     public ArrayList<ArrayList<Integer>> confusionMatrix(){
-        this.confusion_matrix = new ArrayList();
+        this.confusion_matrix = new ArrayList<>();
         int predictedClass, realClass;
 
         //Initialize confusion_matrix
@@ -63,6 +63,7 @@ public abstract class BaseClassification {
         this.executionTime = x - y;
 
         this.confusionMatrix();
+        System.out.println(  );
     }
 
     // this methos splits the data between train and test data

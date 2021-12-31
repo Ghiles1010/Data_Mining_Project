@@ -80,6 +80,10 @@ public class Dataset implements Iterable<ArrayList<Double>>{
         return (int) java.util.Arrays.stream(class_att).distinct().count();
     }
 
+    public boolean contains (ArrayList<Double> list){
+        return this.data.contains(list);
+    }
+
     public double [] getAllClasses (){
         double [] classes;
         classes = (java.util.Arrays.stream(this.getColumn(nbAttributes()-1)).distinct()).toArray();
