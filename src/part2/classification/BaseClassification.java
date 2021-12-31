@@ -5,21 +5,29 @@ import common.Dataset;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class BaseClassification {
+public abstract class BaseClassification {
 
     protected Dataset dataset, train_data, test_data;
-    protected ArrayList<Integer> predictedClasses;
     protected HashMap<ArrayList<Double>, Integer> predictedData;
     protected ArrayList<ArrayList<Integer>> confusion_matrix;
+
+    protected double executionTime;
 
     public BaseClassification(Dataset dataset) {
         this.dataset = dataset;
         this.split_data();
     }
 
-    public BaseClassification(String path) {
-        this.dataset = new Dataset(path);
-        this.split_data();
+    public HashMap<ArrayList<Double>, Integer> getPredictedData() {
+        return predictedData;
+    }
+
+    public ArrayList<ArrayList<Integer>> getConfusion_matrix() {
+        return confusion_matrix;
+    }
+
+    public double getExecutionTime() {
+        return executionTime;
     }
 
     public ArrayList<ArrayList<Integer>> confusionMatrix(){
@@ -44,6 +52,17 @@ public class BaseClassification {
         }
 
         return this.confusion_matrix;
+    }
+
+    public abstract void test();
+
+    public void execute(){
+        double y = System.nanoTime();
+        test();
+        double x = System.nanoTime();
+        this.executionTime = x - y;
+
+        this.confusionMatrix();
     }
 
     // this methos splits the data between train and test data

@@ -104,6 +104,7 @@ public class KNN extends BaseClassification{
         return predictedClass;
     }
 
+    @Override
     public void test(){
 
         this.predictedData = new HashMap<>(  );
@@ -111,7 +112,5 @@ public class KNN extends BaseClassification{
             int predictedClass = predict(list);
             this.predictedData.put(list, predictedClass);
         }
-
-        this.confusionMatrix();
     }
 }
