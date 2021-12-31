@@ -13,9 +13,9 @@ public abstract class BaseClassification {
 
     protected double executionTime;
 
-    public BaseClassification(Dataset dataset) {
+    public BaseClassification(Dataset dataset, int testSize) {
         this.dataset = dataset;
-        this.split_data();
+        this.split_data(testSize);
     }
 
     public HashMap<ArrayList<Double>, Integer> getPredictedData() {
@@ -66,13 +66,13 @@ public abstract class BaseClassification {
     }
 
     // this methos splits the data between train and test data
-    protected void split_data(){
+    protected void split_data(int testSize){
         ArrayList<ArrayList<Double>> train = new ArrayList<>();
         ArrayList<ArrayList<Double>> test = new ArrayList<>();
         double instanceClass;
 
         // nbTestx represent the number of
-        int nbTest1 = 20, nbTest2 = 20, nbTest3 = 20;
+        int nbTest1 = testSize, nbTest2 = testSize, nbTest3 = testSize;
         for (int i=0; i<this.dataset.nbInstances(); i++){
             instanceClass = this.dataset.getClass( i );
             if (instanceClass == 1){

@@ -11,8 +11,8 @@ public class KNN extends BaseClassification{
     private final int k;
     private final String distanceType;
 
-    public KNN(Dataset dataset, int k, String distanceType) {
-        super(dataset);
+    public KNN(Dataset dataset, int k, String distanceType, int testSize) {
+        super(dataset, testSize);
         this.k = k;
 
         if (distanceType.equalsIgnoreCase("euclidean") || distanceType.equalsIgnoreCase("manhattan")){
