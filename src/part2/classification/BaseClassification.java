@@ -9,7 +9,9 @@ public abstract class BaseClassification {
 
     protected Dataset dataset, train_data, test_data;
     protected HashMap<ArrayList<Double>, Integer> predictedData;
+
     protected ArrayList<ArrayList<Integer>> confusion_matrix;
+    int[][] confusionMatrixClass1, confusionMatrixClass2, confusionMatrixClass3;
 
     protected double executionTime;
 
@@ -28,6 +30,18 @@ public abstract class BaseClassification {
 
     public double getExecutionTime() {
         return executionTime;
+    }
+
+    public int[][] getConfusionMatrixClass1() {
+        return confusionMatrixClass1;
+    }
+
+    public int[][] getConfusionMatrixClass2() {
+        return confusionMatrixClass2;
+    }
+
+    public int[][] getConfusionMatrixClass3() {
+        return confusionMatrixClass3;
     }
 
     public ArrayList<ArrayList<Integer>> confusionMatrix(){
@@ -54,6 +68,36 @@ public abstract class BaseClassification {
         return this.confusion_matrix;
     }
 
+    public void confusionMatrixClasses(){
+        this.confusionMatrixClass1 = confusionMatrixForClass(1);
+        this.confusionMatrixClass2 = confusionMatrixForClass(2);
+        this.confusionMatrixClass3 = confusionMatrixForClass(3);
+    }
+
+    private int[][] confusionMatrixForClass(int idClass){
+        int[][] confusionMatrixClass = new int[2][2];
+
+        int predictedClass, realClass;
+
+        for (ArrayList<Double> list : this.predictedData.keySet()) {
+
+            predictedClass = this.predictedData.get(list);
+            realClass = list.get(list.size() - 1).intValue();
+
+            if (predictedClass == idClass && realClass == idClass){
+                confusionMatrixClass[0][0]++;
+            } else if (predictedClass != idClass && realClass == idClass){
+                confusionMatrixClass[0][1]++;
+            } else if (predictedClass == idClass && realClass != idClass){
+                confusionMatrixClass[1][0]++;
+            } else {
+                confusionMatrixClass[1][1]++;
+            }
+        }
+
+        return confusionMatrixClass;
+    }
+
     public abstract void test();
 
     public void execute(){
@@ -63,6 +107,7 @@ public abstract class BaseClassification {
         this.executionTime = x - y;
 
         this.confusionMatrix();
+        this.confusionMatrixClasses();
         System.out.println(  );
     }
 
