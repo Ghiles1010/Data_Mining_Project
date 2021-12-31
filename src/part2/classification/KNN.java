@@ -8,16 +8,36 @@ import java.util.HashMap;
 
 public class KNN extends BaseClassification{
 
-    private int k;
+    private final int k;
+    private final String distanceType;
 
-    public KNN(Dataset dataset, int k) {
+    public KNN(Dataset dataset, int k, String distanceType) {
         super(dataset);
         this.k = k;
+
+        if (distanceType.equalsIgnoreCase("euclidean") || distanceType.equalsIgnoreCase("manhattan")){
+            this.distanceType = distanceType;
+        } else {
+            this.distanceType = "euclidean";
+        }
     }
 
-    public KNN(String path, int k) {
-        super(path);
-        this.k = k;
+    private double euclideanDistance(ArrayList<Double> l1, ArrayList<Double> l2){
+        double dist = 0;
+
+        for (int i=0; i<l1.size(); i++){
+            dist += Math.pow(l1.get(i) - l2.get(i), 2);
+        }
+        return Math.sqrt(dist);
+    }
+
+    private double manhattanDistance(ArrayList<Double> l1, ArrayList<Double> l2){
+        double dist = 0;
+
+        for (int i=0; i<l1.size(); i++){
+            dist += Math.abs(l1.get(i) - l2.get(i));
+        }
+        return dist;
     }
 
     private HashMap<Integer, Double> nearests(HashMap<Integer, Double> nearests, int index, double dist){
@@ -49,6 +69,8 @@ public class KNN extends BaseClassification{
 
     public int predict(ArrayList<Double> instance){
 
+        double dist = 0;
+
         // remove the class instance
         instance = new ArrayList<>( instance );
         instance.remove(this.test_data.nbAttributes()-1);
@@ -57,7 +79,13 @@ public class KNN extends BaseClassification{
 
         for (int i=0; i<this.train_data.nbInstances(); i++){
             ArrayList<Double> train_instance = this.train_data.getInstanceArrayList(i);
-            double dist = this.euclidianDistance(instance, train_instance);
+
+            if (distanceType.equalsIgnoreCase("euclidean")){
+                dist = this.euclideanDistance(instance, train_instance);
+            } else if (distanceType.equalsIgnoreCase("manhattan")){
+                dist = this.manhattanDistance(instance, train_instance);
+            }
+
             nearests = this.nearests(nearests, i, dist);
         }
 

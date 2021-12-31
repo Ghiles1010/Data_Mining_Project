@@ -21,7 +21,7 @@ public class MainPart2 {
         ds.printDataset();
         Discretization.amplitudeDiscretization(ds, 4);
 
-        KNN knn = new KNN(ds, 5);
+        KNN knn = new KNN(ds, 5, "euclidean");
         knn.test();
 
 
