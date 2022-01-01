@@ -2,17 +2,12 @@ package part2.extraction;
 
 import java.util.*;
 
-public class ECLAT {
+public class ECLAT extends BaseExtraction{
 
-    private ArrayList<String[]> discretizedData;
-    private final int minsup;
-
-    private ArrayList<ItemsetElement> L;
     private HashMap<String, ArrayList<Integer>> vectorialRepresentation;
 
     public ECLAT(ArrayList<String[]> discretizedData, int minsupPercentage) {
-        this.discretizedData = discretizedData;
-        this.minsup = Math.floorDiv(minsupPercentage * discretizedData.size(), 100);
+        super(discretizedData, minsupPercentage);
     }
 
     private Set<String> generateTerms() {
