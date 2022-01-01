@@ -25,7 +25,7 @@ public class MainPart2 {
         System.out.println(knn.getPrintedConfusionMatrixClass(1));
         System.out.println(knn.getPrintedConfusionMatrixClass(2));
 
-        ECLAT e = new ECLAT(r, 30);
+        ECLAT e = new ECLAT(r, 20);
         System.out.println( e.run() );
     }
 }

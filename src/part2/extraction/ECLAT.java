@@ -57,10 +57,12 @@ public class ECLAT {
         for (int i=0; i<Lk.size(); i++){
             for (int j=i+1; j<Lk.size(); j++){
                 if(compare(Lk.get(i), Lk.get(j), k)){
-                    ArrayList<String> newLine = new ArrayList<>(  );
+                    Set<String> newLine = new HashSet<>(  );
                     newLine.addAll(Lk.get(i).items);
                     newLine.addAll(Lk.get(j).items);
-                    Ck.add(new ItemsetElement(newLine));
+                    if (! alreadyExist(Ck, newLine)){
+                        Ck.add(new ItemsetElement(new ArrayList<>( newLine )));
+                    }
                 }
             }
         }
@@ -68,7 +70,8 @@ public class ECLAT {
     }
 
     private boolean compare(ItemsetElement item1, ItemsetElement item2, int k){
-        int value = Math.floorDiv(k, 2);
+        int value = k==2? 0 : Math.floorDiv(k, 2);
+
 
         for (String term : item1.items){
             if (item2.items.contains(term)){
@@ -76,6 +79,22 @@ public class ECLAT {
             }
         }
         return value == 0;
+    }
+
+    private boolean alreadyExist(ArrayList<ItemsetElement> Ck, Set<String> set){
+
+        for (ItemsetElement item : Ck){
+            boolean exist = true;
+            for (String term : set){
+                if (! item.items.contains(term)){
+                    exist = false;
+                }
+            }
+            if (exist){
+                return true;
+            }
+        }
+        return false;
     }
 
     private int supportItem(ItemsetElement item){
@@ -129,7 +148,7 @@ public class ECLAT {
         Lk = new ArrayList<>(  );
         for (ItemsetElement item : Ck){
             item.setSupport(supportItem(item));
-            if (item.getSupport() > this.minsup){
+            if (item.getSupport() >= this.minsup){
                 Lk.add(item);
             }
         }
@@ -144,11 +163,14 @@ public class ECLAT {
             Lk = new ArrayList<>(  );
             for (ItemsetElement item : Ck){
                 item.setSupport(supportItem(item));
-                if (item.getSupport() > this.minsup){
+                if (item.getSupport() >= this.minsup){
                     Lk.add(item);
                 }
             }
             L.addAll(Lk);
+        }
+        for (ItemsetElement elem : L){
+            System.out.println( elem.items + " : " + elem.support );
         }
         return L;
     }
