@@ -7,94 +7,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/UI/Mine_Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/UI/Pretreat_Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/common/Dataset.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/part1/Row_str.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/part2/API.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/part2/MainPart2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/part2/classification/BaseClassification.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/part2/classification/KNN.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/part2/classification/NaiveBayes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/part2/extraction/ElementC1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/part2/extraction/FrequentItemSets.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/part2/pretreatment/Discretization.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/part2/pretreatment/Normalization.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Project_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Project_jar2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Project_jar3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Project_jar4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/description.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Soona.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/jfreechart_demo_1_5_2_jar_with_dependencies.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/UI/Predict_Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/part2/extraction/Apriori.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/part2/extraction/BaseExtraction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/part2/extraction/ECLAT.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/part2/extraction/ItemsetElement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/part2/extraction/Rule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/Fake_Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/Fake_Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/UI/Add_Table_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/UI/Add_Table_Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/UI/Add_Table_Scene.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/UI/Attributes_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/UI/Attributes_Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/UI/Attributes_Scene.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/UI/Compare_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/UI/Compare_Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/UI/Compare_Scene.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/UI/Dataset_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/UI/Dataset_Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/UI/Dataset_Scene.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/UI/Edit_Table_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/UI/Edit_Table_Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/UI/Edit_Table_Scene.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/UI/Eval_Scene.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/UI/Eval_controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/UI/Eval_controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/UI/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/UI/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Project/UI/Main_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/UI/Main_Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/UI/Main_Scene.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/UI/Manipulate.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/UI/Manipulate.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/UI/Manipulate_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/UI/Manipulate_Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/UI/Measures_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/UI/Measures_Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/UI/Measures_Scene.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/UI/Menu.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/UI/Plots_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/UI/Plots_Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/UI/Plots_Scene.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/sample/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/sample/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/sample/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/sample/sample.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/utils/Calcul.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/utils/Calcul.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/utils/Charts.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/utils/Charts.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/utils/Dataset.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/utils/Dataset.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/utils/Instance.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/utils/Instance.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/utils/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/utils/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/utils/Main2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/utils/Row.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/utils/Row.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/utils/Row_Field.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/utils/Row_Field.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project/utils/SaveValues.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/utils/SaveValues.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/Add_Table_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Add_Table_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/Attributes_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Attributes_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/Compare_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Compare_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/Dataset_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Dataset_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/Edit_Table_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Edit_Table_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UI/Main_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Main_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/Manipulate_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Manipulate_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/Measures_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Measures_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/Plots_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Plots_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Calcul.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/Calcul.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Charts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/part1/Charts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Dataset.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Instance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/part1/Instance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/part1/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Main2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Row.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/part1/Row.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Row_Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/part1/Row_Field.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/SaveValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/part1/SaveValues.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI/Mine_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Mine_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI/Mine_Scene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Mine_Scene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI/Pretreat_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Pretreat_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/part2/API.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/part2/API.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/part2/MainPart2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/part2/MainPart2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/part2/classification/BaseClassification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/part2/classification/BaseClassification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/part2/extraction/FrequentItemSets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/part2/extraction/FrequentItemSets.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -342,8 +270,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Fake_Main" />
-        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.MainPart2" />
+        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Main2" />
       </list>
     </recent_temporary>
@@ -410,38 +338,38 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="327" y="85" key="FileChooserDialogImpl/0.0.1280.689@0.0.1280.689" timestamp="1641031062034" />
-    <state width="1237" height="225" key="GridCell.Tab.0.bottom" timestamp="1641065457720">
+    <state width="1237" height="142" key="GridCell.Tab.0.bottom" timestamp="1641076631842">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="225" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1641065457720" />
-    <state width="1237" height="225" key="GridCell.Tab.0.center" timestamp="1641065457720">
+    <state width="1237" height="142" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1641076631842" />
+    <state width="1237" height="142" key="GridCell.Tab.0.center" timestamp="1641076631842">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="225" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1641065457720" />
-    <state width="1237" height="225" key="GridCell.Tab.0.left" timestamp="1641065457720">
+    <state width="1237" height="142" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1641076631842" />
+    <state width="1237" height="142" key="GridCell.Tab.0.left" timestamp="1641076631841">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="225" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1641065457720" />
-    <state width="1237" height="225" key="GridCell.Tab.0.right" timestamp="1641065457720">
+    <state width="1237" height="142" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1641076631841" />
+    <state width="1237" height="142" key="GridCell.Tab.0.right" timestamp="1641076631842">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="225" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1641065457720" />
-    <state width="1237" height="207" key="GridCell.Tab.1.bottom" timestamp="1637781422567">
+    <state width="1237" height="142" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1641076631842" />
+    <state width="1237" height="278" key="GridCell.Tab.1.bottom" timestamp="1641075249141">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="207" key="GridCell.Tab.1.bottom/0.0.1280.689@0.0.1280.689" timestamp="1637781422567" />
-    <state width="1237" height="207" key="GridCell.Tab.1.center" timestamp="1637781422567">
+    <state width="1237" height="278" key="GridCell.Tab.1.bottom/0.0.1280.689@0.0.1280.689" timestamp="1641075249141" />
+    <state width="1237" height="278" key="GridCell.Tab.1.center" timestamp="1641075249141">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="207" key="GridCell.Tab.1.center/0.0.1280.689@0.0.1280.689" timestamp="1637781422567" />
-    <state width="1237" height="207" key="GridCell.Tab.1.left" timestamp="1637781422566">
+    <state width="1237" height="278" key="GridCell.Tab.1.center/0.0.1280.689@0.0.1280.689" timestamp="1641075249141" />
+    <state width="1237" height="278" key="GridCell.Tab.1.left" timestamp="1641075249141">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="207" key="GridCell.Tab.1.left/0.0.1280.689@0.0.1280.689" timestamp="1637781422566" />
-    <state width="1237" height="207" key="GridCell.Tab.1.right" timestamp="1637781422567">
+    <state width="1237" height="278" key="GridCell.Tab.1.left/0.0.1280.689@0.0.1280.689" timestamp="1641075249141" />
+    <state width="1237" height="278" key="GridCell.Tab.1.right" timestamp="1641075249141">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="207" key="GridCell.Tab.1.right/0.0.1280.689@0.0.1280.689" timestamp="1637781422567" />
+    <state width="1237" height="278" key="GridCell.Tab.1.right/0.0.1280.689@0.0.1280.689" timestamp="1641075249141" />
     <state x="121" y="0" key="SettingsEditor" timestamp="1641031066358">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
@@ -458,9 +386,9 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="91" y="45" key="new project wizard/0.0.1280.689@0.0.1280.689" timestamp="1639033609865" />
-    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup" timestamp="1641040773865">
+    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup" timestamp="1641069165087">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup/0.0.1280.689@0.0.1280.689" timestamp="1641040773865" />
+    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup/0.0.1280.689@0.0.1280.689" timestamp="1641069165087" />
   </component>
 </project>

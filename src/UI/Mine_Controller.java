@@ -6,11 +6,18 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import part2.API;
+import part2.extraction.BaseExtraction;
+import part2.extraction.ECLAT;
 import part2.extraction.FrequentItemSets;
+import part2.extraction.ItemsetElement;
 
+import javax.swing.table.TableModel;
 import java.lang.reflect.Array;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Mine_Controller {
@@ -28,17 +35,27 @@ public class Mine_Controller {
     private TextField conf;
 
     @FXML
-    private TextArea result_area;
+    private TextArea freq_area;
+    @FXML
+    private TextArea rule_area;
+    @FXML
+    private TextArea p_rule_area;
+    @FXML
+    private TextArea n_rule_area;
 
-    Dataset dataset;
+    @FXML
+    private TextField time_field;
 
-    public  void init(String dataset_path, ArrayList<String[]> result_dataset){
 
+    ArrayList<String[]> result_dataset;
 
-        dataset = new Dataset(dataset_path);
+    public  void init(ArrayList<String[]> result_dataset){
+
+        this.result_dataset = result_dataset;
 
         ObservableList<String> options = FXCollections.observableArrayList("Apriori", "Eclat");
         algo_combox.setItems(options);
+        time_field.setEditable(false);
 
     }
 
@@ -52,9 +69,51 @@ public class Mine_Controller {
                 && !conf.getText().isEmpty()
                 && !support.getText().isEmpty()){
 
-            
+
+            int s = Integer.parseInt(support.getText());
+            double c = Double.parseDouble(conf.getText());
+
+            BaseExtraction algorithm;
+
+            if(seleted.equals("Apriori"))
+                algorithm = API.eclat(result_dataset, s);
+            else
+                algorithm = API.apriori(result_dataset, s);
+
+
+
+            ArrayList<ItemsetElement> frequent = algorithm.getFrequentItems();
+
+
+            String rules = algorithm.getAssociationRules(c);
+            String negatif_rules = algorithm.getNeagitfCorrelationRules();
+            String positif_rules = algorithm.getPositifCorrelationRules();
+
+
+            String exec_time = String.format("%.2f seconds", algorithm.getExecutionTime() / Math.pow(10, 9));
+            write_table(frequent, rules, negatif_rules, positif_rules, exec_time);
+
         }
 
+    }
+
+    void write_table(ArrayList<ItemsetElement> frequent, String rules, String negatif_rules,
+                     String positif_rules, String execution_time){
+
+        StringBuilder sb = new StringBuilder();
+
+
+        for(ItemsetElement item: frequent){
+            sb.append(item.toString()).append("\n");
+        }
+
+        freq_area.setText(sb.toString());
+
+        rule_area.setText(rules);
+        n_rule_area.setText(negatif_rules);
+        p_rule_area.setText(positif_rules);
+
+        time_field.setText(execution_time);
     }
 
     @FXML

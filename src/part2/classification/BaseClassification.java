@@ -28,6 +28,17 @@ public abstract class BaseClassification {
         return confusion_matrix;
     }
 
+    public String getPrintedConfusion_matrix() {
+        String value = "";
+        for (ArrayList<Integer> line : this.confusion_matrix){
+            for (int column : line){
+                value += column + " ";
+            }
+            value += "\n";
+        }
+        return value;
+    }
+
     public double getExecutionTime() {
         return executionTime;
     }
@@ -36,10 +47,20 @@ public abstract class BaseClassification {
         return confusionMatrixClasses.get(idClass);
     }
 
+    public String getPrintedConfusionMatrixClass(int idClass) {
+        int[][] matrix = confusionMatrixClasses.get(idClass);
+        String value = "class " + idClass + "\n" + matrix[0][0] + " " + matrix[0][1] + "\n" + matrix[1][0] + " " + matrix[1][1] + "\n";
+        return value;
+    }
+
     public double getRecall(int idClass){
         int[][] matrix = getConfusionMatrixClass(idClass);
         return (double) matrix[0][0] / (double) (matrix[0][0] + matrix[0][1]);
 
+    }
+
+    public double getMeanRecall(){
+        return (getRecall(1) + getRecall(2) + getRecall(3)) / 3;
     }
 
     public double getPrecision(int idClass){
@@ -47,9 +68,17 @@ public abstract class BaseClassification {
         return (double) matrix[0][0] / (double) (matrix[0][0] + matrix[1][0]);
     }
 
+    public double getMeanPrecision(){
+        return (getPrecision(1) + getPrecision(2) + getPrecision(3)) / 3;
+    }
+
     public double getFScore(int idClass){
         double precision = getPrecision(idClass), recall = getRecall(idClass);
         return (2*precision*recall)/(recall + precision);
+    }
+
+    public double getMeanFScore(){
+        return (getFScore(1) + getFScore(2) + getFScore(3)) / 3;
     }
 
     public double getAccuracy(int idClass){
@@ -57,14 +86,26 @@ public abstract class BaseClassification {
         return (double) (matrix[0][0] + matrix[1][1]) / (double) (matrix[0][0] + matrix[0][1] + matrix[1][0] + matrix[1][1]);
     }
 
+    public double getMeanAccuracy(){
+        return (getAccuracy(1) + getAccuracy(2) + getAccuracy(3)) / 3;
+    }
+
     public double getSensitivity(int idClass){
         int[][] matrix = getConfusionMatrixClass(idClass);
         return (double) matrix[0][0] / (double) (matrix[0][0] + matrix[0][1]);
     }
 
+    public double getMeanSensitivity(){
+        return (getSensitivity(1) + getSensitivity(2) + getSensitivity(3)) / 3;
+    }
+
     public double getSpecificity(int idClass){
         int[][] matrix = getConfusionMatrixClass(idClass);
         return (double) matrix[1][1] / (double) (matrix[1][0] + matrix[1][1]);
+    }
+
+    public double getMeanSpecificity(){
+        return (getSpecificity(1) + getSpecificity(2) + getSpecificity(3)) / 3;
     }
 
     public ArrayList<ArrayList<Integer>> confusionMatrix(){

@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import part1.Row_str;
+import part2.API;
 import part2.pretreatment.Discretization;
 import part2.pretreatment.Normalization;
 
@@ -40,6 +41,10 @@ public class Pretreat_Controller {
     Dataset dataset;
 
     String next_scene;
+
+    Dataset norm_dataset;
+    ArrayList<String[]> result_dataset;
+
 
 
     public  void init(String dataset_path, String next_scene){
@@ -107,15 +112,16 @@ public class Pretreat_Controller {
         Parent scene = loader.load();
 
         switch (next_scene) {
-//            case "Mine_Scene.fxml":
-//                Manipulate_Controller controller = loader.getController();
-//                controller.init(choosen_file.getAbsolutePath());
-//                break;
+            case "Mine_Scene.fxml":
+                Mine_Controller controller = loader.getController();
+                controller.init(result_dataset);
+                break;
 
-//            case "Predict_Scene.fxml":
-//                Dataset_Controller controller1 = loader.getController();
-//                controller1.init(choosen_file.getAbsolutePath());
-//                break;
+            case "Predict_Scene.fxml":
+                Predict_Controller controller1 = loader.getController();
+                int value =  Integer.parseInt(Q.getText());
+                controller1.init(norm_dataset, result_dataset, value);
+                break;
         }
 
         Stage window = (Stage) normal_combox.getScene().getWindow();
@@ -137,6 +143,7 @@ public class Pretreat_Controller {
             else
                 ds = Normalization.zScore(dataset);
 
+            this.norm_dataset = ds;
 
             table.setItems(null);
             set_table(ds);
@@ -169,11 +176,12 @@ public class Pretreat_Controller {
             ArrayList<String[]> result;
 
             if(discret_combox.getSelectionModel().getSelectedItem().equals("Quantiles"))
-                result =  Discretization.amplitudeDiscretization(ds, value);
+                result = API.discretisation(ds, "amplitude", value);
             else
-                result =  Discretization.sizeDiscretization(ds, value);
+                result =  API.discretisation(ds, "size", value);
 
 
+            this.result_dataset = result;
 
             table.setItems(null);
 

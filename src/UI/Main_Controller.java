@@ -39,6 +39,7 @@ public class Main_Controller implements Initializable {
         action_combox.getItems().add("Draw plots");
         action_combox.getItems().add("Compare");
         action_combox.getItems().add("Mine Rules");
+        action_combox.getItems().add("Predict Values");
     }
 
     private String get_selected_scene(){
@@ -68,7 +69,7 @@ public class Main_Controller implements Initializable {
                 pretreat_next_scene = "Mine_Scene.fxml";
                 return "Pretreatment.fxml";
 
-            case "Predict values":
+            case "Predict Values":
                 pretreat_next_scene = "Predict_Scene.fxml";
                 return "Pretreatment.fxml";
 
