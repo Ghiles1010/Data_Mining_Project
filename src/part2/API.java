@@ -11,9 +11,11 @@ import java.util.ArrayList;
 public class API {
 
     public static Dataset normalization(String pathDataset, String normalizationAlgorithm){
-
         Dataset ds = new Dataset(pathDataset);
+        return normalization(ds, normalizationAlgorithm);
+    }
 
+    public static Dataset normalization(Dataset ds, String normalizationAlgorithm){
         if (normalizationAlgorithm.equalsIgnoreCase("minmax")){
             return Normalization.minMax(ds);
         } else if (normalizationAlgorithm.equalsIgnoreCase("zscore")){
@@ -23,7 +25,7 @@ public class API {
         }
     }
 
-    private static ArrayList<String[]> discretisation(Dataset ds, String discretizationAlgorithm, int Q){
+    public static ArrayList<String[]> discretisation(Dataset ds, String discretizationAlgorithm, int Q){
 
         if (discretizationAlgorithm.equalsIgnoreCase("size")){
             return Discretization.sizeDiscretization(ds, Q);
@@ -34,29 +36,14 @@ public class API {
         }
     }
 
-    public static ArrayList<String[]> discretisation(String pathDataset, String normalizationAlgorithm, String discretizationAlgorithm, int Q){
-        Dataset normalizedDataset = API.normalization(pathDataset, normalizationAlgorithm);
-
-        if (discretizationAlgorithm.equalsIgnoreCase("size")){
-            return Discretization.sizeDiscretization(normalizedDataset, Q);
-        } else if (discretizationAlgorithm.equalsIgnoreCase("amplitude")){
-            return Discretization.amplitudeDiscretization(normalizedDataset, Q);
-        } else {
-            return null;
-        }
-    }
-
-    public static KNN knn(String pathDataset, int testSize, String normalizationAlgorithm, int k, String distanceType){
-        Dataset normalizedDataset = API.normalization(pathDataset, normalizationAlgorithm);
-        KNN knn = new KNN(normalizedDataset, k, distanceType, testSize);
+    public static KNN knn(Dataset ds, int testSize, int k, String distanceType){
+        KNN knn = new KNN(ds, k, distanceType, testSize);
         knn.execute();
         return knn;
     }
 
-    public static NaiveBayes naiveBayes(String pathDataset, int testSize, String normalizationAlgorithm, String discretizationAlgorithm, int Q){
-        Dataset normalizedDataset = API.normalization(pathDataset, normalizationAlgorithm);
-        ArrayList<String[]> discretizationData  = API.discretisation(normalizedDataset, discretizationAlgorithm, Q);
-        NaiveBayes naiveBayes = new NaiveBayes(normalizedDataset, testSize, discretizationData, Q);
+    public static NaiveBayes naiveBayes(Dataset ds,  int testSize, ArrayList<String[]> discretizationData, int Q){
+        NaiveBayes naiveBayes = new NaiveBayes(ds, testSize, discretizationData, Q);
         naiveBayes.execute();
         return naiveBayes;
     }
