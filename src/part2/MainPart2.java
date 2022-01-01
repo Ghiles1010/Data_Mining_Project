@@ -21,8 +21,11 @@ public class MainPart2 {
         KNN knn = API.knn(ds, 20, 5, "euclidean");
 
         NaiveBayes naive = API.naiveBayes(ds, 20, r, 4);
-        System.out.println(naive.getPrintedConfusion_matrix());
-        System.out.println(naive.getPrintedConfusionMatrixClass(1));
-        System.out.println(naive.getPrintedConfusionMatrixClass(2));
+        System.out.println(knn.getPrintedConfusion_matrix());
+        System.out.println(knn.getPrintedConfusionMatrixClass(1));
+        System.out.println(knn.getPrintedConfusionMatrixClass(2));
+
+        ECLAT e = new ECLAT(r, 30);
+        System.out.println( e.run() );
     }
 }

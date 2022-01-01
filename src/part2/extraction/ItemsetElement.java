@@ -10,6 +10,19 @@ public class ItemsetElement {
         this.items = items;
         this.support = support;
     }
+
+    public ItemsetElement(ArrayList<String> items){
+        this.items = items;
+    }
+
+    public void setSupport(int support) {
+        this.support = support;
+    }
+
+    public int getSupport() {
+        return support;
+    }
+
     public boolean unique_items(){
         for (int i = 0; i < (this.items.size()-1); i++) {
             char ch = (items).get(i).charAt(1);
@@ -20,4 +33,8 @@ public class ItemsetElement {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "{" + items + '}';
+    }
 }
