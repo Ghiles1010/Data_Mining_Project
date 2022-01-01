@@ -28,12 +28,29 @@ public abstract class BaseClassification {
         return confusion_matrix;
     }
 
+    public String getPrintedConfusion_matrix() {
+        String value = "";
+        for (ArrayList<Integer> line : this.confusion_matrix){
+            for (int column : line){
+                value += column + " ";
+            }
+            value += "\n";
+        }
+        return value;
+    }
+
     public double getExecutionTime() {
         return executionTime;
     }
 
     public int[][] getConfusionMatrixClass(int idClass) {
         return confusionMatrixClasses.get(idClass);
+    }
+
+    public String getPrintedConfusionMatrixClass(int idClass) {
+        int[][] matrix = confusionMatrixClasses.get(idClass);
+        String value = "class " + idClass + "\n" + matrix[0][0] + " " + matrix[0][1] + "\n" + matrix[1][0] + " " + matrix[1][1] + "\n";
+        return value;
     }
 
     public double getRecall(int idClass){

@@ -20,6 +20,8 @@ public class MainPart2 {
         KNN knn = API.knn("dataset/seeds_dataset.txt", 20,"minmax", 5, "euclidean");
 
         NaiveBayes naive = API.naiveBayes("dataset/seeds_dataset.txt", 20,"minmax", "amplitude", 4);
-        System.out.println(  );
+        System.out.println(naive.getPrintedConfusion_matrix());
+        System.out.println(naive.getPrintedConfusionMatrixClass(1));
+        System.out.println(naive.getPrintedConfusionMatrixClass(2));
     }
 }
