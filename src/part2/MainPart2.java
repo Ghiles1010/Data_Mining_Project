@@ -22,13 +22,11 @@ public class MainPart2 {
         KNN knn = API.knn(ds, 20, 5, "euclidean");
 
         NaiveBayes naive = API.naiveBayes(ds, 20, r, 4);
-        System.out.println(knn.getPrintedConfusion_matrix());
-        System.out.println(knn.getPrintedConfusionMatrixClass(1));
-        System.out.println(knn.getPrintedConfusionMatrixClass(2));
 
         ECLAT e = API.eclat(r, 20);
-        System.out.println( e.getFrequentItems() );
         Apriori a = API.apriori(r, 20);
-        System.out.println( a.getFrequentItems() );
+
+        System.out.println( a.associationRules(30).size() );
+        System.out.println( a.associationRules(50).size() );
     }
 }
