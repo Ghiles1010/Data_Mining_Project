@@ -27,6 +27,6 @@ public class MainPart2 {
         Apriori a = API.apriori(r, 20);
 
         a.associationRules(50);
-        System.out.println( a.getAssociationRules() );
+        System.out.println( a.getPositifCorrelationRules() );
     }
 }

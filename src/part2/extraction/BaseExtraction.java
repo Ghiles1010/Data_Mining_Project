@@ -10,7 +10,9 @@ public abstract class BaseExtraction {
     protected final int minsup;
 
     protected ArrayList<ItemsetElement> frequentItems;
-    protected ArrayList<Rule> associationRules;
+    protected ArrayList<Rule> associationRules, neagitfCorrelationRules, positifCorrelationRules;
+
+    protected HashMap<Set<String>, Integer> frequentItemsHash;
 
     protected double executionTime;
 
@@ -36,6 +38,22 @@ public abstract class BaseExtraction {
         return value.toString( );
     }
 
+    public String getNeagitfCorrelationRules() {
+        StringBuilder value = new StringBuilder( );
+        for (Rule r : neagitfCorrelationRules){
+            value.append(r).append("\n");
+        }
+        return value.toString( );
+    }
+
+    public String getPositifCorrelationRules() {
+        StringBuilder value = new StringBuilder( );
+        for (Rule r : positifCorrelationRules){
+            value.append(r).append("\n");
+        }
+        return value.toString( );
+    }
+
     public abstract ArrayList<ItemsetElement> run();
 
     public void execute(){
@@ -50,7 +68,7 @@ public abstract class BaseExtraction {
         double min_confidence = confidencePercentage/100;
 
         associationRules = new ArrayList<>(  );
-        HashMap<Set<String>, Integer> frequentItemsHash = createHashSupport();
+        frequentItemsHash = createHashSupport();
         double confidence=0;
 
         for (ItemsetElement item : this.frequentItems){
@@ -81,7 +99,22 @@ public abstract class BaseExtraction {
 
             }
         }
+        correlationRules();
         return associationRules;
+    }
+
+    private void correlationRules(){
+        neagitfCorrelationRules = new ArrayList<>();
+        positifCorrelationRules = new ArrayList<>();
+
+        for (Rule rule : this.associationRules){
+            double lift = rule.confidence / frequentItemsHash.get(rule.rightSide);
+            if (lift > 1){
+                positifCorrelationRules.add(rule);
+            } else if (lift < 1){
+                neagitfCorrelationRules.add(rule);
+            }
+        }
     }
 
     private Set<String> findRightSide(Set<String> leftSide, ArrayList<String> item){
