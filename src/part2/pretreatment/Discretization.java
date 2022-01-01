@@ -29,12 +29,11 @@ public class Discretization {
             double borne_sup = bornes_sup[0];
             int num_intervalle = 1;
             //Pour la valeur : trouver le num de l'intervalle (en comparant la valeur avec la borne sup des intervalles)
-            while (borne_sup <= bornes_sup[Q-1]){   // bornes_sup[Q-1] : borne max
+            while (borne_sup < bornes_sup[Q-1]){   // bornes_sup[Q-1] : borne max
                 if (instance[i] < borne_sup) {
                     break;
                 }
                 else if(instance[i] >= borne_sup) {
-                    System.out.print("I'm here");
                     borne_sup = bornes_sup[num_intervalle];
                     num_intervalle = num_intervalle + 1;
                 }
