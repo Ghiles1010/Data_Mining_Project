@@ -2,6 +2,8 @@ package utils;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
@@ -243,6 +245,61 @@ public class Dataset {
     public String[] getNames() {
         return Names;
     }
+
+    public void min_max_normalization(){
+
+        for(int i=0; i<Nb_attributes(); i++){
+            double min = Calcul.min(this, i);
+            double max = Calcul.max(this, i);
+
+            double [] column = getColumn(i);
+            for(int j=0; j<Nb_Instances(); j++){
+                double tempValue = (column[j] - min)/(max - min);
+                editInstance(j, i, tempValue);
+            }
+        }
+    }
+
+    public void discretisationEqual(int q) {
+
+
+
+        for(int i=0; i<Nb_attributes(); i++){
+            double min = Calcul.min(this, i);
+            double max = Calcul.max(this, i);
+
+            double length = (max - min)/ q;
+
+            double [] column = getColumn(i);
+
+            for(int j=0; j<Nb_Instances(); j++){
+
+                double tempValue = Math.floor(column[i] / length);
+                editInstance(j, i, 10*i+tempValue);
+            }
+        }
+
+
+    }
+
+    public void frequent_item(){
+
+        HashMap<Double, Double> capitalCities = new HashMap<Double, Double>();
+
+        for(int i=0; i<Nb_attributes(); i++){
+
+            for(int j=0; j<Nb_Instances(); j++){
+
+
+
+            }
+        }
+
+    }
+
+
+
+
 }
 
 

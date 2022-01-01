@@ -271,4 +271,51 @@ public class Calcul {
         return true;
     }
 
+
+    /**********************************************************?
+     *
+     */
+    /*
+    public static void minMaxNormalization(ArrayList<Double> column){
+        double min = Collections.min(column);
+        double max = Collections.max(column);
+
+        for (int i = 0; i < column.size(); i++) {
+            double tempValue = (column.get(i) - min)/(max - min);
+            column.set(i, tempValue);
+        }
+
+        System.out.println(column);
+    }
+
+    public static void discretisationEqual(ArrayList<Double>column, int q, int c){
+        double min = Collections.min(column);
+        double max = Collections.max(column);
+        double int_length= (max-min)/q;
+        double[] array={int_length,int_length*2,int_length*3};
+        ArrayList<String> result= new ArrayList<>();
+
+        for (int i = 0; i < column.size(); i++) {
+            if(column.get(i)<array[0]){
+                result.set(i,'I'+String.valueOf(c)+'1');
+            }
+            else if(column.get(i)<array[1]){
+                result.set(i,'I'+String.valueOf(c)+'2');
+            }
+            else if(column.get(i)<array[2]){
+                result.set(i,'I'+String.valueOf(c)+'3');
+            }
+            else {
+                result.set(i,'I'+String.valueOf(c)+'4');
+            }
+
+        }
+
+        return result;
+
+
+    }
+
+     */
+
 }

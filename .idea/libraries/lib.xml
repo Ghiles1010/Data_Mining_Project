@@ -1,0 +1,21 @@
+<component name="libraryTable">
+  <library name="lib">
+    <ANNOTATIONS>
+      <root url="jar://C:/set up/openjfx-11.0.2_windows-x64_bin-sdk.zip!/javafx-sdk-11.0.2/lib" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://C:/set up/openjfx-11.0.2_windows-x64_bin-sdk.zip!/javafx-sdk-11.0.2/lib" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://C:/set up/openjfx-11.0.2_windows-x64_bin-sdk.zip!/javafx-sdk-11.0.2/lib" />
+    </JAVADOC>
+    <NATIVE>
+      <root url="jar://C:/set up/openjfx-11.0.2_windows-x64_bin-sdk.zip!/javafx-sdk-11.0.2/lib" />
+    </NATIVE>
+    <SOURCES>
+      <root url="jar://C:/set up/openjfx-11.0.2_windows-x64_bin-sdk.zip!/javafx-sdk-11.0.2/lib" />
+    </SOURCES>
+    <jarDirectory url="jar://C:/set up/openjfx-11.0.2_windows-x64_bin-sdk.zip!/javafx-sdk-11.0.2/lib" recursive="false" />
+    <jarDirectory url="jar://C:/set up/openjfx-11.0.2_windows-x64_bin-sdk.zip!/javafx-sdk-11.0.2/lib" recursive="false" type="SOURCES" />
+  </library>
+</component>
