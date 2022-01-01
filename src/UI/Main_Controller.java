@@ -26,6 +26,7 @@ public class Main_Controller implements Initializable {
     @FXML
     ComboBox<String> action_combox;
 
+    private String pretreat_next_scene;
     private File choosen_file;
 
 
@@ -37,6 +38,7 @@ public class Main_Controller implements Initializable {
         action_combox.getItems().add("Calculate measures");
         action_combox.getItems().add("Draw plots");
         action_combox.getItems().add("Compare");
+        action_combox.getItems().add("Mine Rules");
     }
 
     private String get_selected_scene(){
@@ -61,6 +63,14 @@ public class Main_Controller implements Initializable {
 
             case "Compare":
                 return "Compare_Scene.fxml";
+
+            case "Mine Rules":
+                pretreat_next_scene = "Mine_Scene.fxml";
+                return "Pretreatment.fxml";
+
+            case "Predict values":
+                pretreat_next_scene = "Predict_Scene.fxml";
+                return "Pretreatment.fxml";
 
             default:
                 return null;
@@ -118,7 +128,10 @@ public class Main_Controller implements Initializable {
                     controller5.init(choosen_file.getAbsolutePath());
                     break;
 
-
+                case "Pretreatment.fxml":
+                    Pretreat_Controller controller6 = loader.getController();
+                    controller6.init(choosen_file.getAbsolutePath(), pretreat_next_scene);
+                    break;
 
             }
 

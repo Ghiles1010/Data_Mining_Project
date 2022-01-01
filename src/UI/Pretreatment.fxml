@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Pretreat_Controller">
+   <children>
+      <Button layoutX="541.0" layoutY="361.0" mnemonicParsing="false" onAction="#next" text="Next" />
+      <ComboBox fx:id="normal_combox" layoutX="14.0" layoutY="33.0" prefHeight="29.0" prefWidth="171.0" />
+      <Label layoutX="14.0" layoutY="14.0" text="Normalisation" />
+      <ComboBox fx:id="discret_combox" layoutX="309.0" layoutY="33.0" prefHeight="29.0" prefWidth="171.0" />
+      <Label layoutX="309.0" layoutY="14.0" text="Discretisation" />
+      <TableView fx:id="table" layoutX="14.0" layoutY="79.0" maxWidth="571.0" prefHeight="273.0" prefWidth="571.0" />
+      <Button layoutX="536.0" layoutY="33.0" mnemonicParsing="false" onAction="#disc" text="OK" />
+      <Button layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#back" text="Back" />
+      <Label layoutX="487.0" layoutY="14.0" text="Q" />
+      <TextField fx:id="Q" layoutX="487.0" layoutY="33.0" prefHeight="29.0" prefWidth="44.0" />
+      <Button layoutX="189.0" layoutY="33.0" mnemonicParsing="false" onAction="#norm" text="OK" />
+   </children>
+</AnchorPane>
