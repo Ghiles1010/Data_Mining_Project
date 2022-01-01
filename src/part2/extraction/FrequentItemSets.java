@@ -172,4 +172,133 @@ public class FrequentItemSets {
         return (L2);
     }
 
+    public static ArrayList<ItemsetElement> Create_C1(ArrayList<String[]> dataset_disc) {
+
+        ArrayList<ItemsetElement> C1 = new ArrayList();
+
+        for (int i = 0; i < dataset_disc.size(); i++) {
+            for (int j = 0; j < dataset_disc.get(i).length; j++) {
+                ArrayList<String> element_id = new ArrayList();//example:I21
+                element_id.add(dataset_disc.get(i)[j]);//like getting an element with ligne colonne from matrice
+                int position=-1;//On considere initialement que element_id n'existe pas dans C1
+
+                if(C1.isEmpty()) {
+                    ItemsetElement element = new ItemsetElement(element_id, 1);
+                    C1.add(element);
+                }
+                else{
+                    for (int k = 0; k < C1.size(); k++) {
+                        for (int l = 0; l < C1.get(k).items.size(); l++) {
+                            if(C1.get(k).items.get(l).equals(element_id.get(0))){
+                                position=k;
+                                break;
+                            }
+                        }
+
+                    }
+                    if (position!=-1) { // il existe
+                        C1.get(position).support++;
+                    }
+                    else {
+                        ItemsetElement element = new ItemsetElement(element_id, 1);
+                        C1.add(element);
+                    }
+                }
+            }
+        }
+        return (C1);
+    }
+
+    public static ArrayList<String> Common_items(ArrayList<String> items1,ArrayList<String> items2){
+        ArrayList<String> temp_items = new ArrayList<>();
+        for (int i = 0; i < items1.size(); i++) {
+            if (items2.contains(items1.get(i))) {
+                temp_items.add(items1.get(i));
+            }
+        }
+        return temp_items;
+    }
+
+    public static ArrayList<String> Combine_items(ArrayList<String> items1,ArrayList<String> items2){
+        ArrayList<String> combined_itemsets = new ArrayList();
+        ArrayList<String> temp_items = new ArrayList<>();
+        ArrayList<String> common_items = new ArrayList<>();
+
+        common_items=Common_items(items1,items2);
+
+        //copy common_items to temp_items
+        for (int i = 0; i < common_items.size() ; i++) {
+            temp_items.add(common_items.get(i));
+        }
+        //copy diff items to temp_items
+        for (int j = 0; j < items1.size(); j++) {
+            if(!common_items.contains(items1.get(j))){temp_items.add(items1.get(j));}
+            if(!common_items.contains(items2.get(j))){temp_items.add(items2.get(j));}
+        }
+        return temp_items;
+    }
+
+    public static int calcul_supportk(ArrayList<String[]> dataset_disc,ArrayList<String> combined_items) {
+        int support=0;
+        int nb_exist=0;
+
+        for (int i = 0; i < dataset_disc.size(); i++) {
+            ArrayList<String> instance=new ArrayList<>();
+            //convert instance of dataset_disc, from [] to arraylist
+            for (String element:dataset_disc.get(i)) {
+                instance.add(element);
+            }
+            //compare if instance elements CONTAINS combined_items elements
+            for (int j = 0; j < combined_items.size(); j++) {
+                if (instance.contains(combined_items.get(j))) {
+                    nb_exist++;
+                }
+            }
+            if(nb_exist==combined_items.size()){support++;}
+            nb_exist=0;
+        }
+        return support;
+    }
+
+    public static ArrayList<ItemsetElement> generate_Ck(ArrayList<String[]> dataset_disc, int min_sup, ArrayList<ItemsetElement> Lk, int k) {
+        ArrayList<ItemsetElement> Ck = new ArrayList();
+
+        int support;
+        if (k > 1) {
+            for (int i = 0; i < Lk.size() - 1; i++){
+                if (Lk.get(i).support >= min_sup) {
+                    for (int j = (i+1); j < Lk.size(); j++) {
+                        if (Lk.get(j).support >= min_sup) {
+                            ArrayList<String> combined_items = new ArrayList<>();
+                            combined_items = Combine_items(Lk.get(i).items, Lk.get(j).items);//empty, why?
+
+                            support = calcul_supportk(dataset_disc, combined_items);
+                            ItemsetElement temp_Ck_element = new ItemsetElement(combined_items, support);
+                            Ck.add(temp_Ck_element);
+                        }
+                    }
+                }
+            }
+            return Ck;
+        }
+        else{
+            ArrayList<ItemsetElement> C1 = Create_C1(dataset_disc);
+            return C1;
+        }
+
+    }
+
+    public static ArrayList<ItemsetElement> generate_Lk(ArrayList<ItemsetElement> Ck,int min_sup,int k){
+        ArrayList<ItemsetElement> Lk = new ArrayList<>();
+
+        for (int i = 0; i < Ck.size(); i++) {
+            if(Ck.get(i).support >= min_sup){
+                ItemsetElement element_Lk = new ItemsetElement(Ck.get(i).items,Ck.get(i).support);
+                Lk.add(element_Lk);
+            }
+        }
+        return(Lk);
+    }
+
+
 }
