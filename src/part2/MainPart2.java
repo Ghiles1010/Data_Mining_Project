@@ -26,7 +26,7 @@ public class MainPart2 {
         ECLAT e = API.eclat(r, 20);
         Apriori a = API.apriori(r, 20);
 
-        System.out.println( a.associationRules(30).size() );
-        System.out.println( a.associationRules(50).size() );
+        a.associationRules(50);
+        System.out.println( a.getAssociationRules() );
     }
 }

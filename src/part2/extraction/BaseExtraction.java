@@ -10,6 +10,7 @@ public abstract class BaseExtraction {
     protected final int minsup;
 
     protected ArrayList<ItemsetElement> frequentItems;
+    protected ArrayList<Rule> associationRules;
 
     protected double executionTime;
 
@@ -26,6 +27,15 @@ public abstract class BaseExtraction {
         return executionTime;
     }
 
+
+    public String getAssociationRules() {
+        StringBuilder value = new StringBuilder( );
+        for (Rule r : associationRules){
+            value.append(r).append("\n");
+        }
+        return value.toString( );
+    }
+
     public abstract ArrayList<ItemsetElement> run();
 
     public void execute(){
@@ -35,11 +45,11 @@ public abstract class BaseExtraction {
         this.executionTime = x - y;
     }
 
-    public ArrayList<String> associationRules(double confidencePercentage){
+    public ArrayList<Rule> associationRules(double confidencePercentage){
 
         double min_confidence = confidencePercentage/100;
 
-        ArrayList<String> associationRules = new ArrayList<>(  );
+        associationRules = new ArrayList<>(  );
         HashMap<Set<String>, Integer> frequentItemsHash = createHashSupport();
         double confidence=0;
 
@@ -48,12 +58,14 @@ public abstract class BaseExtraction {
             if (item.items.size() == 2){
                 confidence = (double) item.support / frequentItemsHash.get(new HashSet<>(Collections.singleton(item.items.get(0))));
                 if (confidence >= min_confidence){
-                    associationRules.add(item.items.get(0) + " => " + item.items.get(1));
+                    associationRules.add(new Rule(new HashSet<>(Collections.singleton(item.items.get(0))),
+                            new HashSet<>(Collections.singleton(item.items.get(1))), confidence));
                 }
 
                 confidence = (double) item.support / frequentItemsHash.get(new HashSet<>(Collections.singleton(item.items.get(1))));
                 if (confidence >= min_confidence){
-                    associationRules.add(item.items.get(1) + " => " + item.items.get(0));
+                    associationRules.add(new Rule(new HashSet<>(Collections.singleton(item.items.get(1))),
+                            new HashSet<>(Collections.singleton(item.items.get(0))), confidence));
                 }
 
             } else if (item.items.size() != 1){
@@ -63,7 +75,7 @@ public abstract class BaseExtraction {
                     Set<String> rightSide = findRightSide(leftSide, item.items);
                     confidence = (double) item.support / frequentItemsHash.get(leftSide);
                     if (confidence >= min_confidence){
-                        associationRules.add(leftSide + " => " + rightSide);
+                        associationRules.add(new Rule(leftSide, rightSide, confidence));
                     }
                 }
 
