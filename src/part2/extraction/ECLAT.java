@@ -164,9 +164,6 @@ public class ECLAT extends BaseExtraction{
             }
             L.addAll(Lk);
         }
-        for (ItemsetElement elem : L){
-            System.out.println( elem.items + " : " + elem.support );
-        }
         return L;
     }
 
