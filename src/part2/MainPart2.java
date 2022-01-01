@@ -5,6 +5,7 @@ package part2;
 import common.Dataset;
 import part2.classification.KNN;
 import part2.classification.NaiveBayes;
+import part2.extraction.Apriori;
 import part2.extraction.ECLAT;
 import part2.pretreatment.Discretization;
 import part2.pretreatment.Normalization;
@@ -26,6 +27,8 @@ public class MainPart2 {
         System.out.println(knn.getPrintedConfusionMatrixClass(2));
 
         ECLAT e = API.eclat(r, 20);
-        System.out.println( e.getL() );
+        System.out.println( e.getFrequentItems() );
+        Apriori a = API.apriori(r, 20);
+        System.out.println( a.getFrequentItems() );
     }
 }

@@ -7,7 +7,7 @@ public abstract class BaseExtraction {
     protected ArrayList<String[]> discretizedData;
     protected final int minsup;
 
-    protected ArrayList<ItemsetElement> L;
+    protected ArrayList<ItemsetElement> frequentItems;
 
     protected double executionTime;
 
@@ -16,8 +16,8 @@ public abstract class BaseExtraction {
         this.minsup = Math.floorDiv(minsupPercentage * discretizedData.size(), 100);
     }
 
-    public ArrayList<ItemsetElement> getL() {
-        return L;
+    public ArrayList<ItemsetElement> getFrequentItems() {
+        return frequentItems;
     }
 
     public double getExecutionTime() {

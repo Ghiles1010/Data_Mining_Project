@@ -147,7 +147,7 @@ public class ECLAT extends BaseExtraction{
                 Lk.add(item);
             }
         }
-        L = new ArrayList<>( Lk );
+        frequentItems = new ArrayList<>( Lk );
 
         int k = 1;
         while (!Lk.isEmpty()){
@@ -162,9 +162,9 @@ public class ECLAT extends BaseExtraction{
                     Lk.add(item);
                 }
             }
-            L.addAll(Lk);
+            frequentItems.addAll(Lk);
         }
-        return L;
+        return frequentItems;
     }
 
 }

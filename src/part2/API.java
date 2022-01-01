@@ -3,6 +3,7 @@ package part2;
 import common.Dataset;
 import part2.classification.KNN;
 import part2.classification.NaiveBayes;
+import part2.extraction.Apriori;
 import part2.extraction.ECLAT;
 import part2.pretreatment.Discretization;
 import part2.pretreatment.Normalization;
@@ -41,6 +42,12 @@ public class API {
         ECLAT eclat = new ECLAT(discretizationData, minSupportPercentage);
         eclat.execute();
         return eclat;
+    }
+
+    public static Apriori apriori(ArrayList<String[]> discretizationData, int minSupportPercentage){
+        Apriori apriori = new Apriori(discretizationData, minSupportPercentage);
+        apriori.execute();
+        return apriori;
     }
 
     public static KNN knn(Dataset ds, int testSize, int k, String distanceType){
