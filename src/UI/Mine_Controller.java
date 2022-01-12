@@ -5,10 +5,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import part2.API;
 import part2.extraction.BaseExtraction;
 import part2.extraction.ECLAT;
@@ -16,6 +20,7 @@ import part2.extraction.FrequentItemSets;
 import part2.extraction.ItemsetElement;
 
 import javax.swing.table.TableModel;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -76,9 +81,11 @@ public class Mine_Controller {
             BaseExtraction algorithm;
 
             if(seleted.equals("Apriori"))
-                algorithm = API.eclat(result_dataset, s);
-            else
                 algorithm = API.apriori(result_dataset, s);
+            else
+                algorithm = API.eclat(result_dataset, s);
+
+
 
 
 
@@ -117,7 +124,14 @@ public class Mine_Controller {
     }
 
     @FXML
-    void back(ActionEvent event) {
+    void back(ActionEvent event) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("Main_Scene.fxml"));
+        Parent eval_scene = loader.load();
+
+        Stage window = (Stage) freq_area.getScene().getWindow();
+        window.setScene(new Scene(eval_scene));
 
     }
 

@@ -100,7 +100,14 @@ public class Pretreat_Controller {
     }
 
     @FXML
-    void back(ActionEvent event) {
+    void back(ActionEvent event) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("Main_Scene.fxml"));
+        Parent eval_scene = loader.load();
+
+        Stage window = (Stage) table.getScene().getWindow();
+        window.setScene(new Scene(eval_scene));
 
     }
 

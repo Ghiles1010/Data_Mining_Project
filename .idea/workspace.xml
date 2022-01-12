@@ -2,27 +2,33 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="Project:jar4" />
+      <artifact name="Project:jar" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/UI/Predict_Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/part2/extraction/Apriori.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/part2/extraction/BaseExtraction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/part2/extraction/ECLAT.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/part2/extraction/ItemsetElement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/part2/extraction/Rule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_jar/Project.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Project_jar/Project.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_jar3/Project.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_jar4/Project.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/Fake_Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/Fake_Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/UI/Add_Table_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/UI/Add_Table_Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/UI/Attributes_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/UI/Attributes_Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/UI/Compare_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/UI/Compare_Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/UI/Dataset_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/UI/Dataset_Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/UI/Edit_Table_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/UI/Edit_Table_Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/UI/Eval_controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/UI/Eval_controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/UI/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/UI/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Project/UI/Main_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/UI/Main_Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/Main_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Main_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/UI/Manipulate_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/UI/Manipulate_Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/UI/Measures_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/UI/Measures_Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/UI/Plots_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/UI/Plots_Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/sample/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/sample/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/sample/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UI/Mine_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Mine_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/Mine_Scene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Mine_Scene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI/Predict_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Predict_Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UI/Pretreat_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Pretreat_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/part2/API.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/part2/API.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/part2/MainPart2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/part2/MainPart2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/part2/classification/BaseClassification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/part2/classification/BaseClassification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/part2/extraction/FrequentItemSets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/part2/extraction/FrequentItemSets.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +118,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/UI" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15136719" />
     <property name="project.structure.side.proportion" value="0.23387097" />
     <property name="recentsLimit" value="5" />
@@ -160,7 +166,6 @@
     <configuration name="Fake_Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Fake_Main" />
       <module name="Project" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\set up\javafx-sdk-11.0.2\lib&quot; --add-modules=javafx.controls,javafx.fxml" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -306,10 +311,10 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="233" y="4" key="#Project_Structure/0.0.1280.689@0.0.1280.689" timestamp="1641033584418" />
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1637964419547">
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1641077829579">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.689@0.0.1280.689" timestamp="1637964419547" />
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.689@0.0.1280.689" timestamp="1641077829579" />
     <state x="387" y="180" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1637792449920">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
@@ -318,10 +323,10 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="446" y="55" key="#com.intellij.ide.util.MemberChooser/0.0.1280.689@0.0.1280.689" timestamp="1641041881716" />
-    <state x="370" y="128" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1637964459606">
+    <state x="370" y="128" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1641077975737">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="370" y="128" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1280.689@0.0.1280.689" timestamp="1637964459606" />
+    <state x="370" y="128" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1280.689@0.0.1280.689" timestamp="1641077975737" />
     <state x="427" y="229" width="426" height="284" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1641033243345">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
@@ -338,46 +343,46 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="327" y="85" key="FileChooserDialogImpl/0.0.1280.689@0.0.1280.689" timestamp="1641031062034" />
-    <state width="1237" height="142" key="GridCell.Tab.0.bottom" timestamp="1641076631842">
+    <state width="1237" height="35" key="GridCell.Tab.0.bottom" timestamp="1642026530548">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="142" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1641076631842" />
-    <state width="1237" height="142" key="GridCell.Tab.0.center" timestamp="1641076631842">
+    <state width="1237" height="35" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1642026530548" />
+    <state width="1237" height="35" key="GridCell.Tab.0.center" timestamp="1642026530547">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="142" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1641076631842" />
-    <state width="1237" height="142" key="GridCell.Tab.0.left" timestamp="1641076631841">
+    <state width="1237" height="35" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1642026530547" />
+    <state width="1237" height="35" key="GridCell.Tab.0.left" timestamp="1642026530547">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="142" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1641076631841" />
-    <state width="1237" height="142" key="GridCell.Tab.0.right" timestamp="1641076631842">
+    <state width="1237" height="35" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1642026530547" />
+    <state width="1237" height="35" key="GridCell.Tab.0.right" timestamp="1642026530548">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="142" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1641076631842" />
-    <state width="1237" height="278" key="GridCell.Tab.1.bottom" timestamp="1641075249141">
+    <state width="1237" height="35" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1642026530548" />
+    <state width="1237" height="278" key="GridCell.Tab.1.bottom" timestamp="1641143620309">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="278" key="GridCell.Tab.1.bottom/0.0.1280.689@0.0.1280.689" timestamp="1641075249141" />
-    <state width="1237" height="278" key="GridCell.Tab.1.center" timestamp="1641075249141">
+    <state width="1237" height="278" key="GridCell.Tab.1.bottom/0.0.1280.689@0.0.1280.689" timestamp="1641143620309" />
+    <state width="1237" height="278" key="GridCell.Tab.1.center" timestamp="1641143620309">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="278" key="GridCell.Tab.1.center/0.0.1280.689@0.0.1280.689" timestamp="1641075249141" />
-    <state width="1237" height="278" key="GridCell.Tab.1.left" timestamp="1641075249141">
+    <state width="1237" height="278" key="GridCell.Tab.1.center/0.0.1280.689@0.0.1280.689" timestamp="1641143620309" />
+    <state width="1237" height="278" key="GridCell.Tab.1.left" timestamp="1641143620309">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="278" key="GridCell.Tab.1.left/0.0.1280.689@0.0.1280.689" timestamp="1641075249141" />
-    <state width="1237" height="278" key="GridCell.Tab.1.right" timestamp="1641075249141">
+    <state width="1237" height="278" key="GridCell.Tab.1.left/0.0.1280.689@0.0.1280.689" timestamp="1641143620309" />
+    <state width="1237" height="278" key="GridCell.Tab.1.right" timestamp="1641143620309">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="278" key="GridCell.Tab.1.right/0.0.1280.689@0.0.1280.689" timestamp="1641075249141" />
-    <state x="121" y="0" key="SettingsEditor" timestamp="1641031066358">
+    <state width="1237" height="278" key="GridCell.Tab.1.right/0.0.1280.689@0.0.1280.689" timestamp="1641143620309" />
+    <state x="121" y="0" key="SettingsEditor" timestamp="1641077986453">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="121" y="0" key="SettingsEditor/0.0.1280.689@0.0.1280.689" timestamp="1641031066358" />
-    <state x="328" y="169" key="com.intellij.ide.util.TipDialog" timestamp="1641035003554">
+    <state x="121" y="0" key="SettingsEditor/0.0.1280.689@0.0.1280.689" timestamp="1641077986453" />
+    <state x="328" y="169" key="com.intellij.ide.util.TipDialog" timestamp="1642025453743">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="328" y="169" key="com.intellij.ide.util.TipDialog/0.0.1280.689@0.0.1280.689" timestamp="1641035003554" />
+    <state x="328" y="169" key="com.intellij.ide.util.TipDialog/0.0.1280.689@0.0.1280.689" timestamp="1642025453743" />
     <state x="441" y="262" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1637793908576">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
