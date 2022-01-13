@@ -37,7 +37,10 @@ gradle-app.setting
 ## IntelliJ
 ##############################
 out/
+out/production
 .idea/
+.idea/workspace.xml
+.idea/misc.xml
 .idea_modules/
 *.iml
 *.ipr
