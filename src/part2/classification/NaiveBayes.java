@@ -10,6 +10,9 @@ public class NaiveBayes extends BaseClassification{
     private HashMap<ArrayList<Double>, String[]> discretizedTrain, discretizedTest;
     private final int nbIntervals;
 
+    private ArrayList<HashMap<String, HashMap<Integer, Integer>>> frequencyTable;
+    private ArrayList<HashMap<String, HashMap<Integer, Double>>> likelihoodTable;
+
     public NaiveBayes(Dataset dataset, int testSize, ArrayList<String[]> discretizedDataset ,int nbIntervals) {
         super(dataset, testSize);
         this.nbIntervals = nbIntervals;
@@ -35,95 +38,79 @@ public class NaiveBayes extends BaseClassification{
         }
     }
 
-    private int Nb_instance_per_classe(Dataset ds ,int classe){
-        int cpt=0;
-        for(int i=0; i<ds.nbInstances(); i++){
-            int val;
-            val = ds.getClass(i);
-            if(val == classe){cpt++;}
-        }
-        return cpt;
-    }
+    private void createFrequencyTable(){
+        this.frequencyTable = new ArrayList<>(  );
 
-    //proba P=|C(i,d)|/|D|   (d=D)
-    private double[] proba_per_classes(Dataset ds){
-        //|Ci,d|
-        double[] nb_instance_class = new double[3];
-        for(int i=0; i<3; i++){
-            nb_instance_class[i] = Nb_instance_per_classe(ds,i+1);
-        }
-        //|D|
-        int D = ds.nbInstances();
-        //|(Ci,d)|/|D|
-        double[] classes_probas = new double[3];
-        for(int i=0; i<3; i++){
-            classes_probas[i] = (nb_instance_class[i]/D);
-        }
-        return(classes_probas);
+        for (int i=0; i<this.train_data.nbAttributes()-1; i++){
+            frequencyTable.add(new HashMap<>(  ));
+            for (int j=0; j<this.train_data.nbInstances()-1; j++){
+                ArrayList<Double> list = this.train_data.getInstanceArrayList(j);
+                String instance = this.discretizedTrain.get(list)[i];
 
-    }
+                if (!frequencyTable.get(i).containsKey(instance)){
+                    frequencyTable.get(i).put(instance, new HashMap<>( ));
+                    frequencyTable.get(i).get(instance).put(1,0);
+                    frequencyTable.get(i).get(instance).put(2,0);
+                    frequencyTable.get(i).get(instance).put(3,0);
+                }
 
-    //calcul probas per attribute
-    private ArrayList<double[] > probas_per_attribute(int attribute_index){
-        ArrayList<double[]> probas = new ArrayList<>();//Q=4, probas de [(C1,C1,C1,C1),(C2,C2,C2,C2),(C3,C3,C3,C3)]
-
-        for (int i = 0; i < 3; i++) {
-            double[] proba_class = new double[this.nbIntervals];//(C1,C1,C1,C1)
-            for (int j = 0; j < this.nbIntervals; j++) {
-                proba_class[j]=0;
-            }
-            probas.add(proba_class);
-        }
-
-        for(int i=0; i<this.train_data.nbInstances(); i++){
-
-            String value =  this.discretizedTrain.get(train_data.getInstanceArrayList(i))[attribute_index];
-            int classe = this.train_data.getClass(i);
-
-            char ch = value.charAt(2);
-            int intervalle = Integer.parseInt(String.valueOf(ch));
-
-            double[] proba_class2;
-            proba_class2 = probas.get(classe-1);
-            proba_class2[intervalle-1]++;
-            probas.set(classe-1, proba_class2);
-        }
-        //to verify frequences of intervalls in each class for a given attribute (CHECKED)
-
-        for (int i = 0; i < probas.size(); i++) {
-            for (int j = 0; j < probas.get(i).length; j++) {
-                probas.get(i)[j] = probas.get(i)[j]/(this.train_data.nbInstances()/3.0);
+                // get the class
+                int realclass = train_data.getClass( j );
+                int actualFrequency = frequencyTable.get(i).get(instance).get(realclass);
+                frequencyTable.get(i).get(instance).replace(realclass, actualFrequency+1);
             }
         }
-        return probas;
+
+        // adding test labels
+        for (int i=0; i<this.test_data.nbAttributes()-1; i++){
+            for (int j=0; j<this.test_data.nbInstances()-1; j++){
+                ArrayList<Double> list = this.test_data.getInstanceArrayList(j);
+                String instance = this.discretizedTest.get(list)[i];
+
+                if (!frequencyTable.get(i).containsKey(instance)){
+                    frequencyTable.get(i).put(instance, new HashMap<>( ));
+                    frequencyTable.get(i).get(instance).put(1,0);
+                    frequencyTable.get(i).get(instance).put(2,0);
+                    frequencyTable.get(i).get(instance).put(3,0);
+                }
+            }
+        }
     }
 
-    //conditional probas
-    private ArrayList<ArrayList<double[]>> Cond_probas(){
-        ArrayList<ArrayList<double[]>> cond_probas = new ArrayList<>();
+    private void createLikelihoodTable(){
+        this.likelihoodTable = new ArrayList<>(  );
 
-        for(int i=0; i<this.train_data.nbAttributes()-1; i++){
-            cond_probas.add(probas_per_attribute(i));
+        for (int i=0; i<this.frequencyTable.size(); i++){
+            likelihoodTable.add(new HashMap<>(  ));
+            for (String instance : this.frequencyTable.get(i).keySet()){
+                likelihoodTable.get(i).put(instance, new HashMap<>(  ));
+                int totalElements = frequencyTable.get(i).get(instance).get(1) + frequencyTable.get(i).get(instance).get(2) +
+                        frequencyTable.get(i).get(instance).get(3);
+                for (Integer c : frequencyTable.get(i).get(instance).keySet()){
+                    double value = (double) frequencyTable.get(i).get(instance).get(c) / totalElements;
+                    likelihoodTable.get(i).get(instance).put(c, value);
+                }
+            }
         }
-        //to verify final probas for each attribute (CHECKED)
-        return cond_probas;
+    }
+
+    private double calculateProbability(String[] instance, int c){
+
+        double probability = 1.;
+
+        for (int i = 0; i < instance.length-1; i++) {
+            probability *= likelihoodTable.get(i).get(instance[i]).get(c);
+        }
+        return probability;
     }
 
     //Naive bayesian obtained probas for each class
     private double[] Naive_Bayesian(String[] instance){
         double[] naive_bayesian = new double[3];
-        double[] probas_classes = proba_per_classes(this.train_data); //verified! 70 instance for each class
-        ArrayList<ArrayList<double[]>> cond_probas=Cond_probas();// 3 probabilities(3 classes) for each attribute(7 attributes)
 
-        for (int i = 0; i < 3; i++) {
-            naive_bayesian[i] = probas_classes[i];
 
-            for (int j = 0; j < instance.length-1; j++) {
-
-                int intervalle = Integer.parseInt(String.valueOf(instance[j].charAt(2)));
-                naive_bayesian[i] = naive_bayesian[i] * ((cond_probas.get(j).get(i))[intervalle-1]);
-            }
-
+        for (int i = 1; i <= 3; i++) {
+            naive_bayesian[i-1] = calculateProbability(instance, i);
         }
 
         return naive_bayesian;
@@ -144,10 +131,15 @@ public class NaiveBayes extends BaseClassification{
 
     @Override
     public void test() {
+        this.createFrequencyTable();
+        this.createLikelihoodTable();
+
         this.predictedData = new HashMap<>(  );
         for (ArrayList<Double> list : this.test_data){
             int predictedClass = predict(this.discretizedTest.get(list));
             this.predictedData.put(list, predictedClass);
+            System.out.println( list.get(list.size()-1) + " : " + predictedClass );
         }
+        System.out.println( 11 );
     }
 }

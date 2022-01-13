@@ -20,7 +20,7 @@ public class MainPart2 {
         Dataset ds = API.normalization("dataset/seeds_dataset.txt", "minmax");
         ArrayList<String[]> r =  API.discretisation(ds, "amplitude", 4);
 
-        System.out.println(API.knn(ds, 20, 5, "euclidean").getPrintedConfusion_matrix());
+        System.out.println(API.naiveBayes(ds, 20, r, 4).getPrintedConfusion_matrix());
 
     }
 }
