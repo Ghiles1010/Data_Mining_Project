@@ -111,7 +111,7 @@ public abstract class BaseExtraction {
         positifCorrelationRules = new ArrayList<>();
 
         for (Rule rule : this.associationRules){
-            double lift = rule.confidence / frequentItemsHash.get(rule.rightSide);
+            double lift = rule.confidence * this.discretizedData.size() / frequentItemsHash.get(rule.rightSide);
             if (lift > 1){
                 positifCorrelationRules.add(rule);
             } else if (lift < 1){
