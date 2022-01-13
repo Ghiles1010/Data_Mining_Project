@@ -3,6 +3,7 @@ package part2.classification;
 import common.Dataset;
 
 import java.util.ArrayList;
+import java.util.Formatter;
 import java.util.HashMap;
 
 public abstract class BaseClassification {
@@ -29,14 +30,28 @@ public abstract class BaseClassification {
     }
 
     public String getPrintedConfusion_matrix() {
-        String value = "";
+        StringBuilder value = new StringBuilder( );
+
+
+        Formatter fmt = new Formatter();
+        fmt.format("%18s %14s %14s %14s\n", "Actual / Predicted", "class 1", "class 2", "class 3");
+        int i = 1;
         for (ArrayList<Integer> line : this.confusion_matrix){
-            for (int column : line){
-                value += column + " ";
-            }
-            value += "\n";
+            fmt.format("%26s %15d %15d %15d\n", "class" + i, line.get(0), line.get(1), line.get(2));
+            i++;
         }
-        return value;
+        value.append("Confusion Matrix\n");
+        value.append(fmt.toString( ));
+
+        i = 1;
+        while(i<=3){
+            value.append("\n\n");
+            value.append("Confusion Matrix for class ").append(i).append("\n");
+            value.append(this.getPrintedConfusionMatrixClass(i));
+            i++;
+
+        }
+        return value.toString( );
     }
 
     public double getExecutionTime() {
@@ -49,8 +64,12 @@ public abstract class BaseClassification {
 
     public String getPrintedConfusionMatrixClass(int idClass) {
         int[][] matrix = confusionMatrixClasses.get(idClass);
-        String value = "class " + idClass + "\n" + matrix[0][0] + " " + matrix[0][1] + "\n" + matrix[1][0] + " " + matrix[1][1] + "\n";
-        return value;
+
+        Formatter fmt = new Formatter();
+        fmt.format("%28s %20s %20s\n", "", "Predicted : YES", "Predicted : NO");
+        fmt.format("%18s %25s %25s\n", "Actual : YES", matrix[0][0], matrix[0][1]);
+        fmt.format("%18s %25s %25s\n", "Actual : NO", matrix[1][0], matrix[1][1]);
+        return fmt.toString( );
     }
 
     public double getRecall(int idClass){
